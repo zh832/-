@@ -1,0 +1,2089 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="paper">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="工程识图与标注系统复习站：三视图、组合体、剖视图、尺寸标注、公差配合、标准件与装配图，含互动训练与自测。">
+  <title>工程识图与标注 · 系统复习站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%231c242a'/%3E%3Cpath d='M12 4v16M4 12h16' stroke='%23f2ede3' stroke-width='1.4'/%3E%3Crect x='7' y='7' width='10' height='10' fill='none' stroke='%23c4472d' stroke-width='1.4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script>
+    try {
+      var savedTheme = localStorage.getItem("edg.theme.v1");
+      if (savedTheme === "blueprint") document.documentElement.dataset.theme = "blueprint";
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20 15.2A8.4 8.4 0 0 1 8.8 4a8.5 8.5 0 1 0 11.2 11.2Z" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="icon-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="icon-cross" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="icon-book" viewBox="0 0 24 24"><path d="M4 5.5c3.2-1.2 5.7-.8 8 1.2v13c-2.3-2-4.8-2.4-8-1.2ZM20 5.5c-3.2-1.2-5.7-.8-8 1.2v13c2.3-2 4.8-2.4 8-1.2Z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="icon-ruler" viewBox="0 0 24 24"><path d="m4 16 12-12 4 4-12 12-4-4Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 12l1.8 1.8M11 9l1.8 1.8M14 6l1.8 1.8" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+    <symbol id="icon-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  </svg>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#/home" aria-label="工程识图与标注复习站首页">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.2"/><rect x="6.5" y="6.5" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="2.3" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+          </span>
+          <span class="brand-text">
+            <strong>识图·标注</strong>
+            <small>ENGINEERING DRAWING LAB</small>
+          </span>
+        </a>
+
+        <nav class="main-nav" id="main-nav" aria-label="主导航">
+          <a href="#/home" data-nav="home">首页</a>
+          <a href="#/learn/projection" data-nav="learn">核心讲义</a>
+          <a href="#/train" data-nav="train">识图训练</a>
+          <a href="#/reference" data-nav="reference">速查卡</a>
+          <a href="#/quiz" data-nav="quiz">模拟测验</a>
+        </nav>
+
+        <div class="top-actions">
+          <button class="icon-btn search-trigger" id="search-open" type="button" aria-label="搜索知识点">
+            <svg aria-hidden="true"><use href="#icon-search"></use></svg>
+            <span>搜索</span>
+            <kbd>Ctrl K</kbd>
+          </button>
+          <button class="icon-btn" id="theme-toggle" type="button" aria-label="切换蓝图模式">
+            <svg aria-hidden="true" id="theme-icon"><use href="#icon-moon"></use></svg>
+          </button>
+          <button class="icon-btn mobile-menu" id="mobile-menu" type="button" aria-label="打开导航菜单" aria-expanded="false" aria-controls="main-nav">
+            <svg aria-hidden="true"><use href="#icon-menu"></use></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="view" id="view-home" data-view="home">
+        <div class="container">
+          <div class="hero">
+            <div class="hero-copy">
+              <span class="eyebrow">工程识图与标注 · 系统复习站</span>
+              <h1>看懂每一条线，<br><em>标对每一个数</em>。</h1>
+              <p class="hero-lead">从<strong>三视图与组合体</strong>，到<strong>剖视、尺寸标注、公差配合</strong>，再到<strong>标准件与装配图</strong>。用一套可执行的读图方法，把零散知识重新串成完整体系。</p>
+              <div class="hero-actions">
+                <a class="btn" href="#/learn/projection">进入核心讲义 <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+                <a class="btn btn-secondary" href="#/quiz">先做 10 题</a>
+              </div>
+              <div class="hero-meta" aria-label="站点内容概览">
+                <span class="tag">GB/T 制图标准</span>
+                <span class="tag">7 章系统讲义</span>
+                <span class="tag">3 个互动训练</span>
+                <span class="tag">18 道自测</span>
+                <span class="tag">进度本地保存</span>
+              </div>
+            </div>
+
+            <figure class="hero-board" aria-label="三视图、尺寸与表面粗糙度标注示意">
+              <div class="board-frame">
+                <div class="board-meta"><span>DWG. 01 / 2026</span><span>THREE-VIEW STUDY · 1:2</span></div>
+                <svg viewBox="0 0 560 500" role="img" aria-label="一张包含主视图、俯视图、左视图和尺寸标注的工程图示意">
+                  <defs>
+                    <marker id="hero-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                      <path d="M0 0 10 5 0 10Z" style="fill:var(--accent)"/>
+                    </marker>
+                  </defs>
+
+                  <g class="svg-ghost">
+                    <path d="M30 40h500v420H30Z"/>
+                    <path d="M30 40l18 -18M530 40l-18 -18M30 460l18 18M530 460l-18 18"/>
+                    <path d="M30 228h500M343 40v420"/>
+                  </g>
+                  <text x="44" y="58" class="svg-text-sm">FIG. 01 — ORTHOGRAPHIC VIEWS</text>
+                  <text x="500" y="58" class="svg-text-sm" text-anchor="end">UNIT: mm</text>
+
+                  <g class="svg-hidden" opacity="0.55">
+                    <path d="M72 192v42M222 192v42M222 72h44M72 72h44M222 192h44"/>
+                    <path d="M72 298h-28M106 298v18M222 298v18"/>
+                  </g>
+
+                  <g>
+                    <path class="svg-line" d="M72 72H106V150H222V192H72Z"/>
+                    <path class="svg-hidden" d="M149 150v42M171 150v42"/>
+                    <path class="svg-center" d="M60 150h174"/>
+                    <text x="147" y="234" class="svg-text-sm" text-anchor="middle">主视图 / FRONT</text>
+
+                    <rect class="svg-line" x="72" y="244" width="150" height="54" rx="0"/>
+                    <path class="svg-thin" d="M106 244v54"/>
+                    <circle class="svg-line" cx="160" cy="271" r="11"/>
+                    <path class="svg-center" d="M160 254v34M143 271h34"/>
+                    <text x="147" y="318" class="svg-text-sm" text-anchor="middle">俯视图 / TOP</text>
+
+                    <rect class="svg-line" x="276" y="72" width="54" height="120"/>
+                    <path class="svg-hidden" d="M276 150h54"/>
+                    <path class="svg-center" d="M303 60v144"/>
+                    <text x="303" y="210" class="svg-text-sm" text-anchor="middle">左视图 / LEFT</text>
+                  </g>
+
+                  <g>
+                    <path class="svg-dim" d="M48 72v120" marker-start="url(#hero-arrow)" marker-end="url(#hero-arrow)"/>
+                    <path class="svg-dim" d="M72 218h150" marker-start="url(#hero-arrow)" marker-end="url(#hero-arrow)"/>
+                    <path class="svg-dim" d="M238 244v54" marker-start="url(#hero-arrow)" marker-end="url(#hero-arrow)"/>
+                    <text x="38" y="136" class="svg-text-accent" text-anchor="middle" transform="rotate(-90 38 136)">120</text>
+                    <text x="147" y="213" class="svg-text-accent" text-anchor="middle">150</text>
+                    <text x="252" y="274" class="svg-text-accent">54</text>
+                    <path class="svg-dim" d="M171 271 206 264"/>
+                    <text x="212" y="265" class="svg-text-accent">φ16</text>
+                  </g>
+
+                  <g transform="translate(365 280)">
+                    <text x="0" y="0" class="svg-text-sm">SURFACE FINISH</text>
+                    <path class="svg-thin" d="M0 40c12-8 22 8 34 0s22 8 34 0 22 8 34 0 22 8 34 0 22 8 34 0"/>
+                    <path class="svg-dim" d="M65 86l-20 24h28"/>
+                    <path class="svg-dim" d="M45 110h56"/>
+                    <text x="86" y="104" class="svg-text-accent">Ra 3.2</text>
+                    <text x="0" y="142" class="svg-text-sm">SEAT FACE · MACHINED</text>
+                  </g>
+
+                  <g transform="translate(344 430)">
+                    <path class="svg-ghost" d="M0 0h180v52"/>
+                    <path class="svg-thin" d="M8 10h164M8 20h110M8 30h132M8 40h80"/>
+                    <text x="8" y="49" class="svg-text-sm" style="font-size:7px">GB/T 14689 · A3</text>
+                  </g>
+                </svg>
+              </div>
+              <div class="board-note">长对正 · 高平齐 · 宽相等</div>
+              <div class="board-stamp">复习<br>通过</div>
+            </figure>
+          </div>
+
+          <div class="stats-band" aria-label="学习数据">
+            <div class="stat"><span class="stat-num">07</span><span class="stat-label">章系统讲义<br>从投影到装配图</span></div>
+            <div class="stat"><span class="stat-num">33</span><span class="stat-label">个知识专题<br>规则 + 示例 + 易错点</span></div>
+            <div class="stat"><span class="stat-num">18</span><span class="stat-label">道精选题<br>覆盖全部章节</span></div>
+            <div class="stat"><span class="stat-num">03</span><span class="stat-label">个互动训练<br>排序 · 找错 · 配合</span></div>
+          </div>
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">COURSE MAP</span>
+              <h2>一张图，拆成七个复习模块</h2>
+            </div>
+            <p>先建立投影与读图的骨架，再逐步叠加剖视、标注、精度与装配知识。每章都可以单独复习，也可以按顺序推进。</p>
+          </div>
+
+          <div class="chapter-grid">
+            <a class="chapter-card" href="#/learn/projection" data-chapter-card="projection">
+              <div class="card-top"><span class="card-index">CH. 01</span><span class="card-state" data-state>未完成</span></div>
+              <h3>投影与三视图</h3>
+              <p>正投影性质、第一角画法、三等规律与图线规范。读图的一切判断，都从这里开始。</p>
+              <div class="card-tags"><span>正投影</span><span>三等规律</span><span>图线</span></div>
+              <div class="card-progress"><span data-card-progress></span></div>
+            </a>
+
+            <a class="chapter-card" href="#/learn/reading" data-chapter-card="reading">
+              <div class="card-top"><span class="card-index">CH. 02</span><span class="card-state" data-state>未完成</span></div>
+              <h3>组合体读图</h3>
+              <p>形体分析、线面分析、表面连接关系，以及“由两视图补第三视图”的完整推理路径。</p>
+              <div class="card-tags"><span>形体分析</span><span>线面分析</span><span>补视图</span></div>
+              <div class="card-progress"><span data-card-progress></span></div>
+            </a>
+
+            <a class="chapter-card" href="#/learn/section" data-chapter-card="section">
+              <div class="card-top"><span class="card-index">CH. 03</span><span class="card-state" data-state>未完成</span></div>
+              <h3>剖视与断面</h3>
+              <p>全剖、半剖、局部剖与旋转剖的适用条件；断面图与剖视图的区别；剖面线画法。</p>
+              <div class="card-tags"><span>全剖</span><span>半剖</span><span>断面图</span></div>
+              <div class="card-progress"><span data-card-progress></span></div>
+            </a>
+
+            <a class="chapter-card" href="#/learn/dimension" data-chapter-card="dimension">
+              <div class="card-top"><span class="card-index">CH. 04</span><span class="card-state" data-state>未完成</span></div>
+              <h3>尺寸标注</h3>
+              <p>四要素、尺寸基准、定形/定位/总体尺寸，以及 φ、R、C、EQS 等常用符号。</p>
+              <div class="card-tags"><span>尺寸基准</span><span>符号</span><span>尺寸链</span></div>
+              <div class="card-progress"><span data-card-progress></span></div>
+            </a>
+
+            <a class="chapter-card" href="#/learn/precision" data-chapter-card="precision">
+              <div class="card-top"><span class="card-index">CH. 05</span><span class="card-state" data-state>未完成</span></div>
+              <h3>技术要求</h3>
+              <p>表面粗糙度、尺寸公差与配合、几何公差。把“画得对”推进到“做得准”。</p>
+              <div class="card-tags"><span>Ra</span><span>H7/g6</span><span>形位公差</span></div>
+              <div class="card-progress"><span data-card-progress></span></div>
+            </a>
+
+            <a class="chapter-card" href="#/learn/standards" data-chapter-card="standards">
+              <div class="card-top"><span class="card-index">CH. 06</span><span class="card-state" data-state>未完成</span></div>
+              <h3>标准件与常用件</h3>
+              <p>螺纹标记、键、销、滚动轴承与齿轮参数。掌握标准件的“代号语言”。</p>
+              <div class="card-tags"><span>螺纹</span><span>轴承</span><span>齿轮</span></div>
+              <div class="card-progress"><span data-card-progress></span></div>
+            </a>
+
+            <a class="chapter-card" href="#/learn/assembly" data-chapter-card="assembly">
+              <div class="card-top"><span class="card-index">CH. 07</span><span class="card-state" data-state>未完成</span></div>
+              <h3>零件图与装配图</h3>
+              <p>零件图四项内容、装配图序号与明细栏、装配关系分析，以及拆画零件图的顺序。</p>
+              <div class="card-tags"><span>零件图</span><span>明细栏</span><span>拆图</span></div>
+              <div class="card-progress"><span data-card-progress></span></div>
+            </a>
+
+            <a class="chapter-card exam-card" href="#/quiz">
+              <div class="card-top"><span class="card-index">EXAM</span><span class="card-state">随时可做</span></div>
+              <h3>结业自测</h3>
+              <p>从 18 道题中随机抽取，即时反馈与解析。错题会自动收进错题本，适合考前快速回炉。</p>
+              <div class="card-tags"><span>随机抽题</span><span>即时解析</span><span>错题本</span></div>
+              <div class="card-progress"><span style="width:100%;background:var(--accent)"></span></div>
+            </a>
+          </div>
+
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">READING METHOD</span>
+              <h2>三步读图法</h2>
+            </div>
+            <p>不要一上来就算尺寸。先判断“这是什么形状”，再回答“尺寸约束在哪里”，最后核对“制造要求是否齐全”。</p>
+          </div>
+
+          <div class="method-grid">
+            <div class="method-step">
+              <span class="method-num">01</span>
+              <h3>对投影，分形体</h3>
+              <p>先读标题栏和主视图，抓住形状特征；用“长对正、高平齐、宽相等”把各视图对齐，再把组合体拆成若干基本体。</p>
+            </div>
+            <div class="method-step">
+              <span class="method-num">02</span>
+              <h3>想形状，定位置</h3>
+              <p>分析表面连接关系与交线：共面不画线、相切不画线、相交才有线。用线面分析处理切口、斜面与相贯线。</p>
+            </div>
+            <div class="method-step">
+              <span class="method-num">03</span>
+              <h3>读尺寸，核要求</h3>
+              <p>找出主要基准，分清定形、定位、总体尺寸；再读粗糙度、公差与几何公差，确认图纸能完整指导加工与检验。</p>
+            </div>
+          </div>
+
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">7-DAY SPRINT</span>
+              <h2>七天冲刺路线</h2>
+            </div>
+            <p>每天只解决一个主题，最后一天用测验和错题本收口。进度会自动保存在当前浏览器。</p>
+          </div>
+
+          <div class="plan-strip" aria-label="七天复习计划">
+            <div class="plan-day"><span>DAY 01</span><strong>投影与三视图</strong><small>三等规律 + 图线</small></div>
+            <div class="plan-day"><span>DAY 02</span><strong>组合体读图</strong><small>形体 / 线面分析</small></div>
+            <div class="plan-day"><span>DAY 03</span><strong>剖视与断面</strong><small>全剖 / 半剖 / 局部剖</small></div>
+            <div class="plan-day"><span>DAY 04</span><strong>尺寸标注</strong><small>基准 + 符号 + 尺寸链</small></div>
+            <div class="plan-day"><span>DAY 05</span><strong>精度要求</strong><small>Ra / 公差 / 形位公差</small></div>
+            <div class="plan-day"><span>DAY 06</span><strong>标准件与装配</strong><small>螺纹 / 轴承 / 明细栏</small></div>
+            <div class="plan-day"><span>DAY 07</span><strong>测验与回炉</strong><small>模拟测验 + 错题本</small></div>
+          </div>
+
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">PRACTICE LAB</span>
+              <h2>三个工具，把知识变成判断</h2>
+            </div>
+            <p>读图不是背概念。排序读图步骤、找标注错误、判断配合性质，都是考场上真正要做的动作。</p>
+          </div>
+
+          <div class="tool-grid">
+            <div class="tool-card">
+              <svg aria-hidden="true"><use href="#icon-book"></use></svg>
+              <h3>读图流程排序</h3>
+              <p>把四条读图动作排成正确顺序，检验你是否真的知道“先看什么、后看什么”。</p>
+              <a href="#/train">进入训练 →</a>
+            </div>
+            <div class="tool-card">
+              <svg aria-hidden="true"><use href="#icon-ruler"></use></svg>
+              <h3>标注纠错</h3>
+              <p>在一张示意零件图上点出可疑标注，看看尺寸链、虚线和重复标注会怎样出错。</p>
+              <a href="#/train">进入训练 →</a>
+            </div>
+            <div class="tool-card">
+              <svg aria-hidden="true"><use href="#icon-layers"></use></svg>
+              <h3>配合性质速判</h3>
+              <p>选择 H7/g6、H7/k6 等配合，实时查看公差带位置与间隙、过盈量。</p>
+              <a href="#/train">进入训练 →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-learn" data-view="learn" hidden>
+        <div class="container learn-layout">
+          <aside class="chapter-rail" aria-label="章节目录">
+            <div class="rail-head">
+              <span class="eyebrow">COURSE</span>
+              <h2>核心讲义</h2>
+              <div class="rail-progress">
+                <div class="progress-track"><span data-rail-progress></span></div>
+                <span data-rail-count>0 / 7</span>
+              </div>
+            </div>
+            <ul class="rail-list">
+              <li><a class="rail-link" href="#/learn/projection" data-rail="projection"><span class="rail-num">01</span><span class="rail-title">投影与三视图</span><span class="rail-dot"></span></a></li>
+              <li><a class="rail-link" href="#/learn/reading" data-rail="reading"><span class="rail-num">02</span><span class="rail-title">组合体读图</span><span class="rail-dot"></span></a></li>
+              <li><a class="rail-link" href="#/learn/section" data-rail="section"><span class="rail-num">03</span><span class="rail-title">剖视与断面</span><span class="rail-dot"></span></a></li>
+              <li><a class="rail-link" href="#/learn/dimension" data-rail="dimension"><span class="rail-num">04</span><span class="rail-title">尺寸标注</span><span class="rail-dot"></span></a></li>
+              <li><a class="rail-link" href="#/learn/precision" data-rail="precision"><span class="rail-num">05</span><span class="rail-title">技术要求</span><span class="rail-dot"></span></a></li>
+              <li><a class="rail-link" href="#/learn/standards" data-rail="standards"><span class="rail-num">06</span><span class="rail-title">标准件与常用件</span><span class="rail-dot"></span></a></li>
+              <li><a class="rail-link" href="#/learn/assembly" data-rail="assembly"><span class="rail-num">07</span><span class="rail-title">零件图与装配图</span><span class="rail-dot"></span></a></li>
+            </ul>
+            <div class="rail-foot">
+              <p>读完一章就点“标记已掌握”，首页和侧栏会同步进度。</p>
+              <a href="#/reference">打开一页速查 →</a>
+            </div>
+          </aside>
+
+          <div class="course-main">
+            <div class="chapter-progress-line">
+              <span>LEARNING PATH</span>
+              <div class="progress-track"><span data-course-progress></span></div>
+              <span data-course-count>0 / 7 MASTERED</span>
+            </div>
+            <article class="chapter" data-chapter="projection" id="chapter-projection" hidden>
+              <header class="chapter-head" data-figure="01">
+                <span class="eyebrow">CHAPTER 01 · PROJECTION</span>
+                <h1>投影与三视图</h1>
+                <p class="chapter-lead">三视图不是三个孤立的图，而是同一形体在三个方向上的正投影。先建立“三等”关系，再谈读图与补线；所有复杂的组合体，最终都要回到这条基准线上。</p>
+                <div class="chapter-tags"><span class="tag">正投影</span><span class="tag">第一角画法</span><span class="tag">三等规律</span><span class="tag">图线规范</span></div>
+              </header>
+
+              <section class="topic" id="proj-basics" data-keywords="正投影 真实性 积聚性 类似性 平行投影 中心投影 投影法">
+                <div class="topic-head"><span class="topic-index">1.1</span><h2>正投影：工程图样的共同语言</h2></div>
+                <p class="topic-intro">投影法是用光线把物体“压”到平面上的方法。工程图样主要采用<strong>平行正投影</strong>，因为投射方向垂直于投影面，能准确反映物体的形状与尺寸关系。</p>
+
+                <div class="concept-grid">
+                  <div class="concept">
+                    <span class="concept-code">01 / TRUE SHAPE</span>
+                    <h3>真实性</h3>
+                    <p>当平面或直线平行于投影面时，投影反映实形或实长。与投影面平行的轮廓，可以直接量取尺寸。</p>
+                  </div>
+                  <div class="concept">
+                    <span class="concept-code">02 / ACCUMULATION</span>
+                    <h3>积聚性</h3>
+                    <p>当平面或直线垂直于投影面时，平面的投影积聚成一条直线，直线的投影积聚成一个点。</p>
+                  </div>
+                  <div class="concept">
+                    <span class="concept-code">03 / SIMILARITY</span>
+                    <h3>类似性</h3>
+                    <p>当平面或直线倾斜于投影面时，投影变小但不改变形状类型，称为类似形。倾斜角度越大，投影越短。</p>
+                  </div>
+                  <div class="concept">
+                    <span class="concept-code">04 / PROJECTION TYPE</span>
+                    <h3>中心投影与平行投影</h3>
+                    <p>中心投影的投射线交于一点，常见于透视图；平行投影的投射线互相平行。机械制图采用平行正投影。</p>
+                  </div>
+                </div>
+
+                <div class="rule-box">
+                  <span class="rule-label">CORE RULE</span>
+                  <p>工程图样主要采用<strong>第一角正投影</strong>。判断一条线或一个面在视图中的表现，先问：它相对于投影面是<strong>平行、垂直，还是倾斜</strong>？</p>
+                </div>
+              </section>
+
+              <section class="topic" id="proj-config" data-keywords="第一角画法 三视图配置 主视图 俯视图 左视图 投射方向 六个基本视图 第三角">
+                <div class="topic-head"><span class="topic-index">1.2</span><h2>第一角画法与三视图配置</h2></div>
+                <p class="topic-intro">我国机械图样采用第一角画法：物体位于观察者与投影面之间。主视图由前向后投射，俯视图由上向下投射，左视图由左向右投射。</p>
+
+                <div class="table-scroll">
+                  <table class="data-table">
+                    <thead><tr><th>视图</th><th>投射方向</th><th>投影面</th><th>主要反映</th><th>第一角位置</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>主视图</strong></td><td>由前向后</td><td>正立投影面 V</td><td>长、高；通常反映形状特征</td><td><span class="mono">左上方</span></td></tr>
+                      <tr><td><strong>俯视图</strong></td><td>由上向下</td><td>水平投影面 H</td><td>长、宽（前后深度）</td><td><span class="mono">主视图下方</span></td></tr>
+                      <tr><td><strong>左视图</strong></td><td>由左向右</td><td>侧立投影面 W</td><td>高、宽（前后深度）</td><td><span class="mono">主视图右方</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="note-box">
+                  <strong>看进口图纸时注意：</strong>第三角画法的视图配置与第一角不同，常见的配置是俯视图在主视图上方、右视图在主视图右方。读图前先看标题栏或投影符号，不能只凭位置猜测。
+                </div>
+
+                <ul class="clean-list">
+                  <li><strong>主视图优先：</strong>一般选择最能反映零件形状特征的方向作为主视图的投射方向。</li>
+                  <li><strong>六个基本视图：</strong>主、俯、左、右、仰、后。实际图纸不必全部画出，按表达需要选择。</li>
+                  <li><strong>向视图：</strong>不按基本视图位置配置时，要在视图上方标注“A向”等字样，并在原视图附近用箭头指明投射方向。</li>
+                  <li><strong>局部与斜视图：</strong>局部视图只表达局部形状，用波浪线断开；斜视图用于表达倾斜结构，必要时旋转放正并注明“旋转”。</li>
+                </ul>
+              </section>
+
+              <section class="topic" id="proj-thirds" data-keywords="三等规律 长对正 高平齐 宽相等 三视图 投影关系 宽相等 前后深度">
+                <div class="topic-head"><span class="topic-index">1.3</span><h2>三等规律：三视图的坐标约束</h2></div>
+                <p class="topic-intro">同一形体的三个视图必须满足“长对正、高平齐、宽相等”。其中“宽相等”最容易被忽略，它约束的是俯视图与左视图之间的<strong>前后深度</strong>。</p>
+
+                <figure class="figure-card">
+                  <div class="figure-head"><span>FIG. 1-1</span><strong>三视图对照</strong><span>点击视图查看对应关系</span></div>
+                  <div class="figure-toolbar" role="group" aria-label="高亮三视图中的某一个">
+                    <button class="diagram-tab" type="button" data-three-view="front" aria-pressed="false">主视图</button>
+                    <button class="diagram-tab" type="button" data-three-view="top" aria-pressed="false">俯视图</button>
+                    <button class="diagram-tab" type="button" data-three-view="left" aria-pressed="false">左视图</button>
+                    <button class="diagram-tab" type="button" data-three-view="all" aria-pressed="true">显示全部</button>
+                  </div>
+                  <div class="figure-body">
+                    <svg viewBox="0 0 760 390" role="img" aria-label="L形支架的主视图、俯视图和左视图，带尺寸和投影对齐线">
+                      <defs>
+                        <marker id="ch1-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                          <path d="M0 0 10 5 0 10Z" style="fill:var(--accent)"/>
+                        </marker>
+                      </defs>
+
+                      <text x="24" y="26" class="svg-text-sm">FIG. 1-1 / THREE-VIEW RELATION</text>
+                      <text x="736" y="26" class="svg-text-sm" text-anchor="end">UNIT: mm</text>
+
+                      <g class="svg-hidden" opacity="0.55">
+                        <path d="M70 190v55M250 190v55M70 245h-24M250 245h-24"/>
+                        <path d="M250 50h55M250 148h55M250 190h55"/>
+                        <path d="M70 305v-15M250 305v-15"/>
+                      </g>
+
+                      <g data-view-part="front">
+                        <path class="svg-line" d="M70 50H110V148H250V190H70Z"/>
+                        <path class="svg-hidden" d="M166 148v42M194 148v42"/>
+                        <path class="svg-center" d="M54 148h212"/>
+                        <text x="160" y="226" class="svg-text-sm" text-anchor="middle">主视图 / FRONT</text>
+                      </g>
+
+                      <g data-view-part="top">
+                        <rect class="svg-line" x="70" y="245" width="180" height="60"/>
+                        <path class="svg-thin" d="M110 245v60"/>
+                        <circle class="svg-line" cx="180" cy="275" r="14"/>
+                        <path class="svg-center" d="M180 255v40M160 275h40"/>
+                        <text x="160" y="326" class="svg-text-sm" text-anchor="middle">俯视图 / TOP</text>
+                      </g>
+
+                      <g data-view-part="left">
+                        <rect class="svg-line" x="305" y="50" width="60" height="140"/>
+                        <path class="svg-hidden" d="M305 148h60"/>
+                        <path class="svg-center" d="M335 38v164"/>
+                        <text x="335" y="212" class="svg-text-sm" text-anchor="middle">左视图 / LEFT</text>
+                      </g>
+
+                      <g>
+                        <path class="svg-dim" d="M52 50v140" marker-start="url(#ch1-arrow)" marker-end="url(#ch1-arrow)"/>
+                        <path class="svg-dim" d="M70 214h180" marker-start="url(#ch1-arrow)" marker-end="url(#ch1-arrow)"/>
+                        <path class="svg-dim" d="M284 245v60" marker-start="url(#ch1-arrow)" marker-end="url(#ch1-arrow)"/>
+                        <text x="42" y="126" class="svg-text-accent" text-anchor="middle" transform="rotate(-90 42 126)">140</text>
+                        <text x="160" y="209" class="svg-text-accent" text-anchor="middle">180</text>
+                        <text x="298" y="280" class="svg-text-accent">60</text>
+                        <path class="svg-dim" d="M194 275l30 -8"/>
+                        <text x="229" y="269" class="svg-text-accent">φ28</text>
+                      </g>
+
+                      <g class="svg-dim" opacity="0.75">
+                        <path d="M70 240v-8M250 240v-8"/>
+                        <path d="M70 234h180"/>
+                        <text x="160" y="248" class="svg-text-accent" text-anchor="middle" opacity="0">长对正</text>
+                      </g>
+                      <text x="400" y="80" class="svg-text-accent">高平齐 ↕</text>
+                      <text x="400" y="220" class="svg-text-accent">宽相等 ↔</text>
+                      <text x="160" y="238" class="svg-text-accent" text-anchor="middle">长对正 ↔</text>
+                      <text x="398" y="292" class="svg-text-sm">俯视图的上下 = 左视图的左右</text>
+                    </svg>
+                  </div>
+                  <p class="figure-foot" id="three-view-caption" aria-live="polite"><strong>显示全部：</strong>主视图与俯视图“长对正”，主视图与左视图“高平齐”，俯视图与左视图“宽相等”。</p>
+                </figure>
+
+                <div class="formula-strip">
+                  <div><small>FRONT ↔ TOP</small><strong>长对正</strong></div>
+                  <div><small>FRONT ↔ LEFT</small><strong>高平齐</strong></div>
+                  <div><small>TOP ↔ LEFT</small><strong>宽相等</strong></div>
+                </div>
+
+                <div class="rule-box">
+                  <span class="rule-label">EASY TO MISS</span>
+                  <p><strong>宽相等不是“宽度相同”。</strong>俯视图中的上下方向，对应左视图中的左右方向，二者都表示物体的<strong>前后深度</strong>。补画左视图时，先把深度尺寸量到正确方向，再画轮廓。</p>
+                </div>
+              </section>
+
+              <section class="topic" id="proj-lines" data-keywords="图线 粗实线 细实线 虚线 点画线 波浪线 双折线 图纸幅面 比例 标题栏 A3 A4">
+                <div class="topic-head"><span class="topic-index">1.4</span><h2>图线、幅面与比例</h2></div>
+                <p class="topic-intro">图线不仅决定“画得好不好看”，更决定“读得对不对”。同一种线型在图样中承担固定语义，不能凭习惯混用。</p>
+
+                <div class="table-scroll">
+                  <table class="data-table">
+                    <thead><tr><th>线型</th><th>线宽</th><th>主要用途</th><th>读图提示</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>粗实线</strong></td><td>d</td><td>可见轮廓线、可见过渡线</td><td>物体上真实可见的边界</td></tr>
+                      <tr><td><strong>细实线</strong></td><td>约 d/2</td><td>尺寸线、尺寸界线、剖面线、引出线</td><td>不表示形体轮廓</td></tr>
+                      <tr><td><strong>细虚线</strong></td><td>约 d/2</td><td>不可见轮廓线、不可见过渡线</td><td>被遮挡的结构，需要“脑内补形”</td></tr>
+                      <tr><td><strong>细点画线</strong></td><td>约 d/2</td><td>轴线、对称中心线、分度圆</td><td>常用于定位与对称判断</td></tr>
+                      <tr><td><strong>波浪线</strong></td><td>约 d/2</td><td>断裂边界、局部剖视图分界</td><td>表示“只画到这里”</td></tr>
+                      <tr><td><strong>细双点画线</strong></td><td>约 d/2</td><td>假想轮廓、极限位置、相邻辅助零件</td><td>不是当前零件的真实轮廓</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <ul class="clean-list">
+                  <li><strong>线宽比例：</strong>粗线与细线宽度通常按 2:1 配置；同一张图样中，同类图线宽度应保持一致。</li>
+                  <li><strong>中心线：</strong>细点画线两端应超出轮廓线 2～5 mm，便于读图时识别轴线和对称中心。</li>
+                  <li><strong>虚线相交：</strong>虚线与虚线、虚线与中心线相交时，应交于线段处，避免出现“悬空”的点。</li>
+                  <li><strong>图纸幅面：</strong>A0 841×1189、A1 594×841、A2 420×594、A3 297×420、A4 210×297（mm）。优先选用 A0～A4 基本幅面。</li>
+                  <li><strong>比例：</strong>常用缩小比例 1:2、1:5、1:10，放大比例 2:1、5:1。无论比例如何，图上标注的尺寸数字始终是物体的<strong>实际尺寸</strong>。</li>
+                </ul>
+
+                <div class="note-box"><strong>标题栏：</strong>通常位于图纸右下角，包含零件名称、图号、材料、比例、绘图与审核等信息。读零件图的第一眼，应先看标题栏。</div>
+              </section>
+
+              <section class="topic" id="proj-checklist" data-keywords="读图顺序 标题栏 主视图 形状特征 六个基本视图 向视图 局部视图 斜视图 易错点">
+                <div class="topic-head"><span class="topic-index">1.5</span><h2>从一张图开始：读图顺序与易错点</h2></div>
+                <p class="topic-intro">拿到图样，不要立刻盯住某个尺寸。先建立“这是什么、从哪个方向看”的框架，再逐步进入局部细节。</p>
+
+                <ol class="clean-list" style="counter-reset: none;">
+                  <li><strong>读标题栏：</strong>确认零件名称、材料、比例和图号，建立对零件用途的预期。</li>
+                  <li><strong>找主视图：</strong>判断投射方向，找出最能反映形状特征的视图。</li>
+                  <li><strong>对齐视图：</strong>用三等规律把各视图对应起来，先看大轮廓，再看内部结构。</li>
+                  <li><strong>想象形体：</strong>先整体后局部，先可见轮廓后虚线结构，必要时结合剖视图。</li>
+                  <li><strong>核对尺寸与技术要求：</strong>确认基准、定形/定位尺寸、粗糙度和公差是否完整。</li>
+                </ol>
+
+                <div class="pitfall">
+                  <div class="pitfall-head">COMMON PITFALLS / 常见错误</div>
+                  <ul>
+                    <li><strong>把细实线当轮廓线：</strong>尺寸线、剖面线和引出线都不是物体的边界。</li>
+                    <li><strong>忽略宽相等：</strong>补左视图时把俯视图的上下方向直接当成左右方向，导致前后关系颠倒。</li>
+                    <li><strong>漏读虚线：</strong>虚线表示不可见结构，常是孔、槽或内部台阶的关键线索。</li>
+                    <li><strong>把第三角配置当第一角：</strong>进口图纸要先确认投影制，不能只看视图位置。</li>
+                    <li><strong>按比例量图：</strong>图样比例可能缩小或放大，尺寸必须以标注数字为准。</li>
+                  </ul>
+                </div>
+              </section>
+
+              <footer class="chapter-footer">
+                <div class="footer-nav">
+                  <a class="btn btn-secondary btn-small" href="#/home"><svg aria-hidden="true"><use href="#icon-arrow-left"></use></svg> 返回首页</a>
+                  <a class="btn btn-secondary btn-small" href="#/learn/reading">下一章：组合体读图 <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+                </div>
+                <button class="btn btn-small master-btn" type="button" data-master="projection"><svg aria-hidden="true"><use href="#icon-check"></use></svg><span>标记本章已掌握</span></button>
+              </footer>
+            </article>
+            <article class="chapter" data-chapter="reading" id="chapter-reading" hidden>
+              <header class="chapter-head" data-figure="02">
+                <span class="eyebrow">CHAPTER 02 · FORM READING</span>
+                <h1>组合体读图</h1>
+                <p class="chapter-lead">组合体并不可怕，它只是若干基本体按一定位置关系“拼接”或“切割”的结果。读图的关键，是把一个复杂外形还原成几个熟悉的形体，再用投影关系逐一验证。</p>
+                <div class="chapter-tags"><span class="tag">形体分析</span><span class="tag">线面分析</span><span class="tag">表面连接</span><span class="tag">补第三视图</span></div>
+              </header>
+
+              <section class="topic" id="read-form" data-keywords="形体分析法 叠加 切割 综合 基本体 棱柱 圆柱 圆锥 球 组合体">
+                <div class="topic-head"><span class="topic-index">2.1</span><h2>形体分析法：先把复杂体拆小</h2></div>
+                <p class="topic-intro">形体分析法是组合体读图的主线：把组合体分解为若干基本体，逐个想象其形状，再分析它们的相对位置和组合方式。</p>
+
+                <div class="concept-grid">
+                  <div class="concept"><span class="concept-code">STEP 01</span><h3>分</h3><p>沿主要轮廓、台阶、轴线或对称面，把组合体分成棱柱、圆柱、圆锥、球等基本体。</p></div>
+                  <div class="concept"><span class="concept-code">STEP 02</span><h3>想</h3><p>根据每个基本体的特征视图，想象它在空间中的形状和大小。先整体，后局部。</p></div>
+                  <div class="concept"><span class="concept-code">STEP 03</span><h3>合</h3><p>按“叠加、切割、综合”的关系重新组合，检查各基本体之间的位置和表面连接。</p></div>
+                  <div class="concept"><span class="concept-code">STEP 04</span><h3>验</h3><p>用三等规律逐项核对投影，确认没有多画、漏画或虚实颠倒的图线。</p></div>
+                </div>
+
+                <div class="rule-box">
+                  <span class="rule-label">MNEMONIC</span>
+                  <p><strong>先分后合，先外后内；先大后小，先形后位。</strong>不要一开始就纠结一条虚线的归属，先回答“整体由哪几块组成”。</p>
+                </div>
+
+                <ul class="clean-list">
+                  <li><strong>叠加：</strong>两个或多个基本体以共面、相切、相交等方式组合。</li>
+                  <li><strong>切割：</strong>从一个基本体上挖去若干部分，常见于凹槽、切口、通孔。</li>
+                  <li><strong>综合：</strong>既有叠加又有切割，是考试中最常见的组合形式。</li>
+                </ul>
+              </section>
+
+              <section class="topic" id="read-line" data-keywords="线面分析法 封闭线框 图线 面 交线 转向轮廓线 类似形 投影">
+                <div class="topic-head"><span class="topic-index">2.2</span><h2>线面分析法：一个线框对应什么</h2></div>
+                <p class="topic-intro">当形体有切口、斜面、相贯线或复杂交线时，单靠“拆基本体”可能不够。此时要切换到线面分析：把视图中的线框与空间中的面、线对应起来。</p>
+
+                <figure class="figure-card">
+                  <div class="figure-head"><span>FIG. 2-1</span><strong>线框与表面</strong><span>线面分析的基本单位</span></div>
+                  <div class="figure-body">
+                    <svg viewBox="0 0 760 300" role="img" aria-label="L形块的轴测图，前面、顶面和侧面分别标注为A、B、C">
+                      <text x="24" y="26" class="svg-text-sm">FIG. 2-1 / CLOSED FRAME ↔ FACE</text>
+                      <text x="736" y="26" class="svg-text-sm" text-anchor="end">AXONOMETRIC</text>
+
+                      <g opacity="0.55" class="svg-hidden">
+                        <path d="M180 15v160M260 15v90M440 105v70M180 175h260"/>
+                        <path d="M100 220l80-45M360 220l80-45"/>
+                      </g>
+
+                      <polygon points="100,60 180,60 260,15 180,15" stroke-width="1.4" style="fill:var(--blue-soft);stroke:var(--ink)"/>
+                      <polygon points="180,150 360,150 440,105 260,105" stroke-width="1.4" style="fill:var(--blue-soft);stroke:var(--ink)"/>
+                      <polygon points="360,150 360,220 440,175 440,105" stroke-width="1.4" style="fill:var(--accent-soft);stroke:var(--ink)"/>
+                      <polygon points="100,60 180,60 180,150 360,150 360,220 100,220" stroke-width="1.8" style="fill:var(--surface-2);stroke:var(--ink)"/>
+                      <polygon points="100,60 100,220 180,175 180,15" stroke-width="1.4" style="fill:var(--surface-3);stroke:var(--ink)"/>
+
+                      <g class="svg-dim">
+                        <path d="M275 190 245 172"/>
+                        <path d="M338 105 315 128"/>
+                        <path d="M398 168 375 157"/>
+                        <circle cx="275" cy="190" r="3"/>
+                        <circle cx="338" cy="105" r="3"/>
+                        <circle cx="398" cy="168" r="3"/>
+                      </g>
+                      <text x="284" y="195" class="svg-text-lg">A 前面</text>
+                      <text x="345" y="103" class="svg-text-lg">B 顶面</text>
+                      <text x="405" y="173" class="svg-text-lg">C 侧面</text>
+
+                      <text x="120" y="252" class="svg-text-sm">一个封闭线框，通常是空间一个面的投影</text>
+                      <text x="120" y="268" class="svg-text-sm">相邻线框通常对应不同表面或不同深度</text>
+                    </svg>
+                  </div>
+                  <p class="figure-foot"><strong>读图要点：</strong>封闭线框不一定是“完全平坦的面”，也可能是曲面投影或孔口的边界。判断时要结合其他视图和相邻线框，不能只看单一视图。</p>
+                </figure>
+
+                <div class="table-scroll">
+                  <table class="data-table">
+                    <thead><tr><th>视图中看到的元素</th><th>通常表示</th><th>读图提示</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>封闭线框</strong></td><td>一个面、曲面投影或孔口边界</td><td>结合相邻视图判断是平面、曲面还是孔</td></tr>
+                      <tr><td><strong>相邻线框</strong></td><td>不同表面，或同一表面被遮挡的部分</td><td>分界线通常是棱线、交线或转向轮廓线</td></tr>
+                      <tr><td><strong>直线</strong></td><td>棱线、交线、转向轮廓线或面的积聚</td><td>直线也可能是一个侧面的投影</td></tr>
+                      <tr><td><strong>曲线</strong></td><td>相贯线、截交线、圆或曲面转向轮廓</td><td>常见于圆柱、圆锥、球与平面的相交</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="note-box"><strong>类似形：</strong>倾斜于投影面的平面，投影仍保持边数相同、凸凹关系相似的形状，但尺寸会缩小。看到“形状像但尺寸不对”的线框，要考虑它是否是倾斜面。</div>
+              </section>
+
+              <section class="topic" id="read-surface" data-keywords="表面连接 共面 相切 相交 不平齐 相贯线 转向轮廓 线 画线 不画线">
+                <div class="topic-head"><span class="topic-index">2.3</span><h2>表面连接：哪里该画线，哪里不该画</h2></div>
+                <p class="topic-intro">组合体读图最常错在“多画一条线”或“漏画一条线”。判断依据是两表面的连接关系，而不是主观感觉。</p>
+
+                <div class="concept-grid">
+                  <div class="concept"><span class="concept-code">COPLANAR / 不画线</span><h3>共面</h3><p>两表面平齐、投影完全重合时，分界处不画线。共面通常意味着它们属于同一个可见表面。</p></div>
+                  <div class="concept"><span class="concept-code">TANGENT / 不画线</span><h3>相切</h3><p>圆柱面与平面、两曲面之间平滑过渡时，相切处不画线，转向轮廓线按需要画出。</p></div>
+                  <div class="concept"><span class="concept-code">INTERSECT / 画线</span><h3>相交</h3><p>两表面相交会产生交线或相贯线，必须画出。常见于圆柱与圆柱、圆柱与平面相交。</p></div>
+                  <div class="concept"><span class="concept-code">OFFSET / 画线</span><h3>不平齐</h3><p>两表面有明显高低或前后错位时，分界处画线，读图时要判断哪一面更靠前。</p></div>
+                </div>
+
+                <div class="rule-box">
+                  <span class="rule-label">INTERSECTION</span>
+                  <p><strong>相贯线通常向大圆柱的轴线方向弯曲。</strong>读图时先找两条圆柱的轴线，再判断曲线弯向哪一侧；不要把它误认成圆弧或椭圆的一部分。</p>
+                </div>
+
+                <ul class="clean-list">
+                  <li><strong>共面不画线：</strong>如果两个面在同一平面上，分界处没有真实棱线。</li>
+                  <li><strong>相切不画线：</strong>相切是平滑过渡，不应出现突变棱线；但转向轮廓线仍需按投影规律画出。</li>
+                  <li><strong>相交必画线：</strong>交线是真实存在的边界，漏画会导致形体无法闭合。</li>
+                  <li><strong>不平齐要画线：</strong>高低差或前后差形成真实台阶，线型按可见、不可见分别处理。</li>
+                </ul>
+              </section>
+
+              <section class="topic" id="read-third" data-keywords="补第三视图 补缺线 两视图 投影规律 可见 虚线 外轮廓 内轮廓 步骤">
+                <div class="topic-head"><span class="topic-index">2.4</span><h2>补第三视图：从两条投影到完整形体</h2></div>
+                <p class="topic-intro">“已知两视图，补画第三视图”是组合体读图的高频题型。它考的不是画图速度，而是你对形体与投影关系的完整推理。</p>
+
+                <div class="formula-strip">
+                  <div><small>ORDER 01</small><strong>先外形</strong></div>
+                  <div><small>ORDER 02</small><strong>后内部</strong></div>
+                  <div><small>ORDER 03</small><strong>先可见</strong></div>
+                  <div style="border-right:0"><small>ORDER 04</small><strong>后虚线</strong></div>
+                </div>
+
+                <ol class="clean-list">
+                  <li><strong>抓特征视图：</strong>找出最能反映形体特征的那个视图，先据此建立整体形状。</li>
+                  <li><strong>对投影：</strong>把已知两视图按“长对正、高平齐、宽相等”对齐，确定每个特征的深度和高度。</li>
+                  <li><strong>分块想象：</strong>按基本体或切割块逐一想象，标出哪些轮廓在第三视图中可见，哪些会被遮挡。</li>
+                  <li><strong>补外轮廓：</strong>先画可见外轮廓，再补内部孔槽的虚线；不要一开始就陷入细节。</li>
+                  <li><strong>检查：</strong>用三等规律、表面连接关系和虚实线规则逐条复核，尤其检查相切处是否多画了线。</li>
+                </ol>
+
+                <div class="note-box"><strong>补缺线时：</strong>先找“投影缺什么”，再判断“该线是可见还是不可见”。如果一条线在某个视图中存在，在另一个视图中却找不到对应投影，通常说明形体判断有误。</div>
+              </section>
+
+              <section class="topic" id="read-pitfalls" data-keywords="组合体 易错 多画线 漏画线 相贯线 相切 共面 虚线 实线">
+                <div class="topic-head"><span class="topic-index">2.5</span><h2>高频错误清单</h2></div>
+                <p class="topic-intro">下面这些错误几乎都来自同一个问题：没有把“视图中看到的线”与“空间中真实存在的面/线”对应起来。</p>
+
+                <div class="pitfall">
+                  <div class="pitfall-head">COMMON PITFALLS / 常见错误</div>
+                  <ul>
+                    <li><strong>共面处多画一条线：</strong>把两个平齐的表面误认为有台阶。</li>
+                    <li><strong>相切处多画一条线：</strong>把平滑过渡误认为交线，导致轮廓突变。</li>
+                    <li><strong>漏画相贯线：</strong>圆柱与圆柱相交时，交线是真实边界，不能省略。</li>
+                    <li><strong>虚线画成粗实线：</strong>被遮挡的结构仍然是不可见轮廓，线型不能随意升级。</li>
+                    <li><strong>把转向轮廓线当成棱线：</strong>曲面转向轮廓线不是实际棱边，但在投影中需要表达。</li>
+                    <li><strong>补视图时深度方向颠倒：</strong>忘记俯视图的上下对应左视图的左右，导致前后关系反了。</li>
+                  </ul>
+                </div>
+              </section>
+
+              <footer class="chapter-footer">
+                <div class="footer-nav">
+                  <a class="btn btn-secondary btn-small" href="#/learn/projection"><svg aria-hidden="true"><use href="#icon-arrow-left"></use></svg> 上一章</a>
+                  <a class="btn btn-secondary btn-small" href="#/learn/section">下一章：剖视与断面 <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+                </div>
+                <button class="btn btn-small master-btn" type="button" data-master="reading"><svg aria-hidden="true"><use href="#icon-check"></use></svg><span>标记本章已掌握</span></button>
+              </footer>
+            </article>
+            <article class="chapter" data-chapter="section" id="chapter-section" hidden>
+              <header class="chapter-head" data-figure="03">
+                <span class="eyebrow">CHAPTER 03 · SECTION VIEWS</span>
+                <h1>剖视与断面</h1>
+                <p class="chapter-lead">外形看得见，内部看不清，就用剖视。剖切是假想的，但表达必须严谨：剖切位置、投射方向、剖面线、可见与不可见轮廓，每一处都在传递结构信息。</p>
+                <div class="chapter-tags"><span class="tag">全剖</span><span class="tag">半剖</span><span class="tag">局部剖</span><span class="tag">断面图</span></div>
+              </header>
+
+              <section class="topic" id="sec-concept" data-keywords="剖视图 假想剖切 剖切面 剖切符号 投射方向 内部结构 剖面线 全剖视">
+                <div class="topic-head"><span class="topic-index">3.1</span><h2>剖视图是怎么形成的</h2></div>
+                <p class="topic-intro">用假想的剖切面把物体剖开，移去观察者与剖切面之间的部分，再把剩余部分向投影面投射，所得的视图就是剖视图。</p>
+
+                <div class="concept-grid">
+                  <div class="concept"><span class="concept-code">01 / IMAGINARY</span><h3>剖切是假想的</h3><p>剖切只发生在画这一个视图时，不改变物体的真实形状，也不影响其他视图的表达。</p></div>
+                  <div class="concept"><span class="concept-code">02 / POSITION</span><h3>剖切位置要合理</h3><p>剖切面应尽量通过孔的轴线、槽的对称面或内部结构的中心，才能把内形完整剖到。</p></div>
+                  <div class="concept"><span class="concept-code">03 / PROJECTION</span><h3>剖后仍按正投影</h3><p>移去靠近观察者的一半后，剩余部分照常投影；剖切面与物体接触的部分画剖面线。</p></div>
+                  <div class="concept"><span class="concept-code">04 / LABEL</span><h3>剖切符号</h3><p>粗短画表示剖切位置，箭头表示投射方向，大写字母标注“A—A”，与剖视图标题对应。</p></div>
+                </div>
+
+                <div class="rule-box">
+                  <span class="rule-label">CORE</span>
+                  <p><strong>剖视图解决的是“内部结构表达”。</strong>如果外形简单、内形复杂，或不对称零件内部有孔槽，优先考虑剖视；不要为了“看起来专业”而给所有零件都加剖视。</p>
+                </div>
+              </section>
+
+              <section class="topic" id="sec-types" data-keywords="全剖视 半剖视 局部剖视 旋转剖 阶梯剖 斜剖 复合剖 剖切平面 对称 波浪线 点画线">
+                <div class="topic-head"><span class="topic-index">3.2</span><h2>全剖、半剖、局部剖：怎么选</h2></div>
+                <p class="topic-intro">剖视方式不是随意的。选择依据主要有三点：零件是否对称、内形与外形哪个更复杂、需要表达的范围有多大。</p>
+
+                <figure class="figure-card">
+                  <div class="figure-head"><span>FIG. 3-1</span><strong>三种基本剖视</strong><span>切换查看差异</span></div>
+                  <div class="figure-toolbar" role="group" aria-label="切换剖视方式">
+                    <button class="diagram-tab" type="button" data-section-mode="full" aria-pressed="true">全剖</button>
+                    <button class="diagram-tab" type="button" data-section-mode="half" aria-pressed="false">半剖</button>
+                    <button class="diagram-tab" type="button" data-section-mode="local" aria-pressed="false">局部剖</button>
+                  </div>
+                  <div class="figure-body">
+                    <svg viewBox="0 0 760 390" role="img" aria-label="带阶梯孔的零件外形视图与三种剖视方式对照">
+                      <defs>
+                        <pattern id="ch3-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                          <line x1="0" y1="0" x2="0" y2="8" class="svg-hatch-line"/>
+                        </pattern>
+                        <clipPath id="local-clip">
+                          <path d="M450 72c8 6 14-5 22 1s14-6 22 1 14-6 22 1 14-6 22 1 14-6 22 1 14-5 22 1v20c-8 6-14-5-22 1s-14-6-22 1-14-6-22 1-14-6-22 1-14-6-22 1-14-5-22 1v48c8 6 14-5 22 1s14-6 22 1 14-6 22 1 14-6 22 1 14-5 22 1v26c-8 6-14-5-22 1s-14-6-22 1-14-6-22 1-14-6-22 1-14-5-22 1v24H450Z"/>
+                        </clipPath>
+                        <marker id="ch3-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                          <path d="M1 1L9 5L1 9z" style="fill:var(--accent)"/>
+                        </marker>
+                      </defs>
+
+                      <text x="24" y="26" class="svg-text-sm">FIG. 3-1 / SECTION TYPES</text>
+                      <text x="736" y="26" class="svg-text-sm" text-anchor="end">A—A</text>
+
+                      <g>
+                        <rect class="svg-line" x="50" y="80" width="180" height="110"/>
+                        <path class="svg-hidden" d="M112 80v55M168 80v55M125 135v55M155 135v55M112 135h56"/>
+                        <path class="svg-center" d="M140 62v148"/>
+                        <text x="140" y="224" class="svg-text-sm" text-anchor="middle">外形视图 / OUTSIDE</text>
+                        <text x="140" y="245" class="svg-text-sm" text-anchor="middle">内部孔槽用虚线表示</text>
+                        <path class="svg-dim" d="M50 66h180"/>
+                        <text x="140" y="62" class="svg-text-accent" text-anchor="middle">A</text>
+                      </g>
+
+                      <g data-section-panel="full">
+                        <path d="M430 80H490V135H504V190H430Z" fill="url(#ch3-hatch)" stroke-width="2" style="stroke:var(--ink)"/>
+                        <path d="M610 80H550V135H536V190H610Z" fill="url(#ch3-hatch)" stroke-width="2" style="stroke:var(--ink)"/>
+                        <path d="M490 80V135H504M550 80V135H536" fill="none" stroke-width="1.5" style="stroke:var(--ink)"/>
+                        <path class="svg-center" d="M520 62v148"/>
+                        <text x="520" y="224" class="svg-text-sm" text-anchor="middle">A—A 全剖</text>
+                        <text x="520" y="245" class="svg-text-sm" text-anchor="middle">整个内部结构被剖开</text>
+                        <text x="443" y="172" class="svg-text-sm">剖切面后的材料</text>
+                      </g>
+
+                      <g data-section-panel="half" hidden>
+                        <rect class="svg-line" x="430" y="80" width="90" height="110"/>
+                        <path class="svg-hidden" d="M490 80v55M504 135v55M490 135h14"/>
+                        <path d="M550 80H610V190H536V135H550V80Z" fill="url(#ch3-hatch)" stroke-width="2" style="stroke:var(--ink)"/>
+                        <path d="M550 80V135H536" fill="none" stroke-width="1.5" style="stroke:var(--ink)"/>
+                        <path class="svg-center" d="M520 62v148"/>
+                        <text x="520" y="224" class="svg-text-sm" text-anchor="middle">半剖视图</text>
+                        <text x="520" y="245" class="svg-text-sm" text-anchor="middle">左外形 · 右内形</text>
+                        <text x="520" y="68" class="svg-text-accent" text-anchor="middle">分界用细点画线</text>
+                      </g>
+
+                      <g data-section-panel="local">
+                        <rect class="svg-line" x="430" y="80" width="180" height="110"/>
+                        <path class="svg-hidden" d="M490 80v55M550 80v55M504 135v55M536 135v55M490 135h60"/>
+                        <rect x="450" y="72" width="150" height="128" fill="url(#ch3-hatch)" clip-path="url(#local-clip)"/>
+                        <path d="M490 80V135H504M550 80V135H536" fill="none" stroke-width="1.5" style="stroke:var(--ink)"/>
+                        <path d="M450 72c8 6 14-5 22 1s14-6 22 1 14-6 22 1 14-6 22 1 14-6 22 1 14-5 22 1 14-6 22 1M450 200c8 6 14-5 22 1s14-6 22 1 14-6 22 1 14-6 22 1 14-5 22 1" fill="none" stroke-width="1" style="stroke:var(--ink-soft)"/>
+                        <path d="M450 72v128M600 72v128" fill="none" stroke-width="1" stroke-dasharray="3 5" style="stroke:var(--ink-soft)"/>
+                        <path class="svg-center" d="M520 62v148"/>
+                        <text x="520" y="224" class="svg-text-sm" text-anchor="middle">局部剖视图</text>
+                        <text x="520" y="245" class="svg-text-sm" text-anchor="middle">只剖开孔所在局部</text>
+                        <text x="520" y="68" class="svg-text-accent" text-anchor="middle">波浪线分界</text>
+                      </g>
+
+                      <g class="svg-dim">
+                        <path d="M266 135h154" marker-start="url(#ch3-arrow)" marker-end="url(#ch3-arrow)"/>
+                      </g>
+                      <text x="370" y="129" class="svg-text-accent" text-anchor="middle">投射方向</text>
+
+                      <text x="50" y="290" class="svg-text-sm">剖切面通过孔轴线，假设移去观察者一侧的材料</text>
+                      <text x="50" y="306" class="svg-text-sm">剩余部分投影 → 剖视图中孔变为可见轮廓，材料画剖面线</text>
+                    </svg>
+                  </div>
+                  <p class="figure-foot" id="section-mode-caption" aria-live="polite"><strong>全剖：</strong>适用范围最广，尤其适合外形简单、内部结构复杂或不对称的零件。剖切后整个内部结构一次表达清楚。</p>
+                </figure>
+
+                <div class="table-scroll">
+                  <table class="data-table">
+                    <thead><tr><th>类型</th><th>适用条件</th><th>关键画法</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>全剖视图</strong></td><td>内部结构复杂、外形简单或不对称</td><td>整个视图剖开，内部轮廓全部可见</td></tr>
+                      <tr><td><strong>半剖视图</strong></td><td>基本对称的零件，内形与外形都需要表达</td><td>一半视图、一半剖视；分界用细点画线，不画成粗实线</td></tr>
+                      <tr><td><strong>局部剖视图</strong></td><td>只需表达局部内部结构，或外形不宜全部剖开</td><td>用波浪线分界；波浪线不应与轮廓线重合或穿过孔槽</td></tr>
+                      <tr><td><strong>旋转剖视图</strong></td><td>用两个相交剖切面剖开，交线垂直于某一基本投影面</td><td>先旋转到同一平面再投影；标注“A—A”</td></tr>
+                      <tr><td><strong>阶梯剖视图</strong></td><td>内部结构不在同一平面，用多个平行剖切面</td><td>剖切位置转折处要标注；不要漏画转折线</td></tr>
+                      <tr><td><strong>斜剖视图</strong></td><td>倾斜内部结构，用倾斜剖切面</td><td>剖视图可旋转放正，注明旋转方向</td></tr>
+                      <tr><td><strong>复合剖视图</strong></td><td>多个相交或平行剖切面组合</td><td>按各剖切面的投影关系依次表达</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="rule-box">
+                  <span class="rule-label">SELECT</span>
+                  <p><strong>先看对称性，再看内形复杂度。</strong>对称件想同时表达内外形，优先半剖；内部结构只在局部，优先局部剖；内形复杂且外形简单，优先全剖。</p>
+                </div>
+              </section>
+
+              <section class="topic" id="sec-hatch" data-keywords="剖面线 剖面符号 45度 细实线 相邻零件 方向 间隔 金属材料 同一零件">
+                <div class="topic-head"><span class="topic-index">3.3</span><h2>剖面线：不是装饰，是材料信息</h2></div>
+                <p class="topic-intro">剖切面与物体接触的部分要画剖面符号（剖面线）。它不是阴影，也不是为了好看，而是表示“这里是实体材料”。</p>
+
+                <ul class="clean-list">
+                  <li><strong>方向：</strong>金属材料通常画成与水平方向成 45° 的细实线，间隔均匀。</li>
+                  <li><strong>同一零件：</strong>同一零件在各剖视图中的剖面线方向、间隔应保持一致。</li>
+                  <li><strong>相邻零件：</strong>相邻零件的剖面线方向应相反，或方向相同但间隔不同，以区分零件。</li>
+                  <li><strong>宽度：</strong>剖面线用细实线，不能画成粗实线；剖面线应与主要轮廓线成一定角度，避免平行混淆。</li>
+                  <li><strong>不画区域：</strong>孔、槽等空腔部分不画剖面线；螺栓、螺母等标准件沿纵向剖切时通常不剖。</li>
+                </ul>
+
+                <div class="note-box"><strong>装配图中的剖面线：</strong>相邻零件的剖面线方向相反或间隔不同，是“区分不同零件”的重要线索。读装配图时，先看剖面线，再找零件序号。</div>
+              </section>
+
+              <section class="topic" id="sec-section" data-keywords="断面图 移出断面 重合断面 剖视图 区别 接触部分 轮廓线 粗实线 细实线">
+                <div class="topic-head"><span class="topic-index">3.4</span><h2>断面图：只画被切到的那一块</h2></div>
+                <p class="topic-intro">断面图只画出剖切面与物体接触部分的形状，不画剖切面后面的结构。它和剖视图的区别，是“只画切口”还是“连后面的可见结构一起画”。</p>
+
+                <div class="concept-grid">
+                  <div class="concept"><span class="concept-code">REMOVED SECTION</span><h3>移出断面图</h3><p>画在原视图外侧，轮廓线用粗实线；通常需要标注剖切位置和字母。适合表达键槽、孔、肋板等断面形状。</p></div>
+                  <div class="concept"><span class="concept-code">SUPERIMPOSED</span><h3>重合断面图</h3><p>直接画在视图内部，轮廓线用细实线；不遮挡原视图时可以不标注。适合结构简单、断面较小的场合。</p></div>
+                  <div class="concept"><span class="concept-code">DIFFERENCE</span><h3>与剖视图的区别</h3><p>剖视图包含剖切面后方可见结构；断面图只表达剖切面与物体的接触部分，不画后续轮廓。</p></div>
+                  <div class="concept"><span class="concept-code">SYMMETRY</span><h3>对称断面</h3><p>对称的移出断面可画在剖切位置延长线上；不对称断面通常需要标注投射方向或字母。</p></div>
+                </div>
+
+                <div class="rule-box">
+                  <span class="rule-label">REMEMBER</span>
+                  <p><strong>剖视图看“里面有什么”，断面图看“切口长什么样”。</strong>题目问“只表达断面形状”时，不要再把后面的孔壁或台阶画进去。</p>
+                </div>
+              </section>
+
+              <section class="topic" id="sec-pitfalls" data-keywords="剖视错误 半剖 分界 波浪线 剖面线 剖切符号 漏标 多画 标准件">
+                <div class="topic-head"><span class="topic-index">3.5</span><h2>剖视图高频错误</h2></div>
+                <p class="topic-intro">剖视图的评分点往往不在“画得像不像”，而在规定是否遵守：分界线、剖面线、标注和虚实关系。</p>
+
+                <div class="pitfall">
+                  <div class="pitfall-head">COMMON PITFALLS / 常见错误</div>
+                  <ul>
+                    <li><strong>半剖分界画成粗实线：</strong>应使用细点画线，表示对称中心而不是实体棱线。</li>
+                    <li><strong>局部剖波浪线穿过孔槽：</strong>波浪线应画在实体材料上，不能穿过空腔，也不能与轮廓线重合。</li>
+                    <li><strong>剖面线方向或间隔不一致：</strong>同一零件在各剖视图中必须保持一致。</li>
+                    <li><strong>漏画剖切符号：</strong>剖切位置和投射方向需要时不可省略，字母要与剖视图标题对应。</li>
+                    <li><strong>把标准件纵向剖开：</strong>螺栓、螺母、销等标准件沿纵向剖切时通常按不剖处理。</li>
+                    <li><strong>断面图画成剖视图：</strong>把剖切面后方的结构也画出来，导致表达冗余。</li>
+                  </ul>
+                </div>
+              </section>
+
+              <footer class="chapter-footer">
+                <div class="footer-nav">
+                  <a class="btn btn-secondary btn-small" href="#/learn/reading"><svg aria-hidden="true"><use href="#icon-arrow-left"></use></svg> 上一章</a>
+                  <a class="btn btn-secondary btn-small" href="#/learn/dimension">下一章：尺寸标注 <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+                </div>
+                <button class="btn btn-small master-btn" type="button" data-master="section"><svg aria-hidden="true"><use href="#icon-check"></use></svg><span>标记本章已掌握</span></button>
+              </footer>
+            </article>
+            <article class="chapter" data-chapter="dimension" id="chapter-dimension" hidden>
+              <header class="chapter-head" data-figure="04">
+                <span class="eyebrow">CHAPTER 04 · DIMENSIONING</span>
+                <h1>尺寸标注</h1>
+                <p class="chapter-lead">图形负责“像”，尺寸负责“准”。尺寸标注必须做到正确、完整、清晰、合理：不多不少，基准明确，加工和检验都能直接使用。</p>
+                <div class="chapter-tags"><span class="tag">尺寸四要素</span><span class="tag">尺寸基准</span><span class="tag">定形 / 定位 / 总体</span><span class="tag">尺寸符号</span></div>
+              </header>
+
+              <section class="topic" id="dim-elements" data-keywords="尺寸 尺寸线 尺寸界线 尺寸数字 箭头 四要素 细实线 标注">
+                <div class="topic-head"><span class="topic-index">4.1</span><h2>尺寸的四要素</h2></div>
+                <p class="topic-intro">一个完整的尺寸由尺寸界线、尺寸线、箭头和尺寸数字组成。四者缺一不可，且都要使用细实线。</p>
+
+                <figure class="figure-card">
+                  <div class="figure-head"><span>FIG. 4-1</span><strong>尺寸标注的组成</strong><span>以长度尺寸为例</span></div>
+                  <div class="figure-body">
+                    <svg viewBox="0 0 760 330" role="img" aria-label="矩形零件上标注280毫米长度尺寸，并标出尺寸界线、尺寸线、箭头和尺寸数字">
+                      <defs>
+                        <marker id="dim-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                          <path d="M0 0 10 5 0 10Z" style="fill:var(--accent)"/>
+                        </marker>
+                      </defs>
+                      <text x="24" y="26" class="svg-text-sm">FIG. 4-1 / ANATOMY OF A DIMENSION</text>
+                      <text x="736" y="26" class="svg-text-sm" text-anchor="end">UNIT: mm</text>
+
+                      <rect class="svg-line" x="180" y="80" width="280" height="120"/>
+                      <circle class="svg-line" cx="320" cy="140" r="28"/>
+                      <path class="svg-center" d="M280 140h80M320 100v80"/>
+                      <path class="svg-hidden" d="M180 200v62M460 200v62"/>
+                      <path class="svg-dim" d="M180 250h280" marker-start="url(#dim-arrow)" marker-end="url(#dim-arrow)"/>
+                      <path class="svg-dim" d="M180 200v50M460 200v50"/>
+
+                      <text x="320" y="243" class="svg-text-accent" text-anchor="middle" style="font-size:12px">280</text>
+                      <text x="320" y="282" class="svg-text-sm" text-anchor="middle">尺寸数字</text>
+                      <text x="268" y="268" class="svg-text-sm" text-anchor="end">尺寸线</text>
+                      <path class="svg-dim" d="M272 263 310 252"/>
+
+                      <text x="104" y="282" class="svg-text-sm" text-anchor="end">尺寸界线</text>
+                      <path class="svg-dim" d="M108 276 180 260"/>
+
+                      <text x="508" y="250" class="svg-text-sm">箭头</text>
+                      <path class="svg-dim" d="M500 246h-42"/>
+
+                      <text x="418" y="105" class="svg-text-sm">φ56</text>
+                      <path class="svg-dim" d="M408 102 348 135"/>
+
+                      <text x="180" y="70" class="svg-text-sm" text-anchor="middle">尺寸基准？</text>
+                      <path class="svg-dim" d="M160 76 180 80"/>
+
+                      <text x="80" y="150" class="svg-text-sm">轮廓线</text>
+                      <path class="svg-dim" d="M120 145 178 140"/>
+
+                      <text x="500" y="310" class="svg-text-sm" text-anchor="end">尺寸数字不能被图线穿过</text>
+                    </svg>
+                  </div>
+                  <p class="figure-foot"><strong>读图注意：</strong>尺寸线与被注线段平行，尺寸界线由轮廓线或中心线引出；尺寸数字旁的符号（如 φ、R）不能省略。</p>
+                </figure>
+
+                <div class="concept-grid">
+                  <div class="concept"><span class="concept-code">EXTENSION LINE</span><h3>尺寸界线</h3><p>从尺寸的起点或终点引出，表示尺寸范围的边界。一般与被注轮廓垂直，并与尺寸线垂直。</p></div>
+                  <div class="concept"><span class="concept-code">DIMENSION LINE</span><h3>尺寸线</h3><p>表示尺寸方向，必须与被注线段平行。同一方向的尺寸线应尽量整齐排列。</p></div>
+                  <div class="concept"><span class="concept-code">ARROW</span><h3>箭头</h3><p>箭尖指向尺寸界线，表示尺寸的起止。空间不足时，箭头可以外置或用斜线代替。</p></div>
+                  <div class="concept"><span class="concept-code">NUMBER</span><h3>尺寸数字</h3><p>表示实际大小，与绘图比例无关。水平尺寸字头朝上，竖直尺寸字头朝左。</p></div>
+                </div>
+              </section>
+
+              <section class="topic" id="dim-types" data-keywords="尺寸基准 设计基准 工艺基准 定形尺寸 定位尺寸 总体尺寸 主要基准 辅助基准">
+                <div class="topic-head"><span class="topic-index">4.2</span><h2>基准与三类尺寸</h2></div>
+                <p class="topic-intro">标注尺寸的第一步不是量图，而是确定基准。基准决定尺寸从哪里量起，也决定加工和检验时如何建立坐标系。</p>
+
+                <div class="concept-grid">
+                  <div class="concept"><span class="concept-code">DESIGN DATUM</span><h3>设计基准</h3><p>根据零件在部件中的功能、装配关系确定的基准。通常优先作为主要尺寸基准。</p></div>
+                  <div class="concept"><span class="concept-code">PROCESS DATUM</span><h3>工艺基准</h3><p>为加工、测量或装夹方便而选定的基准。设计基准与工艺基准应尽量重合。</p></div>
+                  <div class="concept"><span class="concept-code">FORM SIZE</span><h3>定形尺寸</h3><p>确定各基本体形状和大小的尺寸，如直径、半径、长度、宽度、高度、槽宽等。</p></div>
+                  <div class="concept"><span class="concept-code">LOCATION SIZE</span><h3>定位尺寸</h3><p>确定各基本体之间相对位置的尺寸，如孔中心距、轴线位置、槽的定位尺寸。</p></div>
+                </div>
+
+                <div class="formula-strip">
+                  <div><small>SHAPE</small><strong>定形</strong></div>
+                  <div><small>POSITION</small><strong>定位</strong></div>
+                  <div><small>OVERALL</small><strong>总体</strong></div>
+                </div>
+
+                <ul class="clean-list">
+                  <li><strong>总体尺寸：</strong>零件的总长、总宽、总高。总体尺寸不一定与定形、定位尺寸同时标注，避免形成封闭尺寸链。</li>
+                  <li><strong>主要基准：</strong>通常只有一个，决定零件最主要方向的尺寸。</li>
+                  <li><strong>辅助基准：</strong>为标注局部结构而增加的基准，仍需与主要基准建立联系。</li>
+                  <li><strong>尺寸完整但不冗余：</strong>每个结构只标一次，能由其他尺寸自然确定的尺寸不要重复标注。</li>
+                </ul>
+
+                <div class="rule-box">
+                  <span class="rule-label">KEY IDEA</span>
+                  <p><strong>先定基准，再标定形，最后标定位。</strong>如果一张图上的尺寸都能从两个明确基准量出，读图和加工就会非常顺；如果尺寸到处“飞”，通常说明基准没有选好。</p>
+                </div>
+              </section>
+
+              <section class="topic" id="dim-symbols" data-keywords="直径符号 φ 半径 R 球 Sφ SR 正方形 倒角 C 均布 EQS 角度 弧长 厚度 尺寸符号">
+                <div class="topic-head"><span class="topic-index">4.3</span><h2>常用尺寸符号</h2></div>
+                <p class="topic-intro">符号不是缩写，而是尺寸语义的一部分。漏写 φ 或 R，可能让加工人员把直径当成半径，直接把零件做废。</p>
+
+                <div class="table-scroll">
+                  <table class="data-table">
+                    <thead><tr><th>符号</th><th>含义</th><th>示例</th><th>读法</th></tr></thead>
+                    <tbody>
+                      <tr><td class="mono">φ</td><td>直径</td><td>φ30、2×φ8</td><td>直径 30；两个直径 8 的孔</td></tr>
+                      <tr><td class="mono">R</td><td>半径</td><td>R10</td><td>半径 10，尺寸线通常从圆心引出</td></tr>
+                      <tr><td class="mono">Sφ / SR</td><td>球直径 / 球半径</td><td>Sφ20、SR15</td><td>球面直径 20；球面半径 15</td></tr>
+                      <tr><td class="mono">□</td><td>正方形</td><td>□20</td><td>正方形边长 20</td></tr>
+                      <tr><td class="mono">C</td><td>倒角</td><td>C2</td><td>2×45° 倒角，也可写 2×45°</td></tr>
+                      <tr><td class="mono">EQS</td><td>均布</td><td>4×φ6 EQS</td><td>4 个直径 6 的孔均匀分布</td></tr>
+                      <tr><td class="mono">⌒</td><td>弧长</td><td>⌒R20</td><td>半径 20 的圆弧弧长</td></tr>
+                      <tr><td class="mono">°</td><td>角度</td><td>45°</td><td>角度值，数字一般水平书写</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="note-box"><strong>孔的数量与分布：</strong>“4×φ8”只说明有 4 个直径 8 的孔，不说明位置；还需要给出孔中心距、分布圆直径或坐标定位尺寸。只有“EQS”也不等于位置已完整确定。</div>
+              </section>
+
+              <section class="topic" id="dim-rules" data-keywords="尺寸标注规则 正确 完整 清晰 合理 尺寸数字 方向 虚线 重复 尺寸链 交线 相贯线">
+                <div class="topic-head"><span class="topic-index">4.4</span><h2>标注规则：正确、完整、清晰、合理</h2></div>
+                <p class="topic-intro">尺寸标注的四个评价词不是口号，它们分别对应：符合标准、没有遗漏、读图方便、便于加工测量。</p>
+
+                <ul class="clean-list">
+                  <li><strong>正确：</strong>符合国家标准，符号、线型、箭头、数字方向都正确。</li>
+                  <li><strong>完整：</strong>定形、定位、总体尺寸齐全，能唯一确定零件形状。</li>
+                  <li><strong>清晰：</strong>尺寸排列整齐，数字不被图线穿过，尽量标注在形状特征视图上。</li>
+                  <li><strong>合理：</strong>符合加工工艺和测量要求，基准明确，避免封闭尺寸链和重复标注。</li>
+                </ul>
+
+                <div class="concept-grid">
+                  <div class="concept"><span class="concept-code">PLACE</span><h3>标在可见处</h3><p>优先标注在可见轮廓和形状特征视图上，避免在虚线上标注。虚线标注既不清晰，也不利于加工读图。</p></div>
+                  <div class="concept"><span class="concept-code">ONCE</span><h3>同一尺寸只标一次</h3><p>同一结构在多个视图中重复标注会造成矛盾。选择一个表达最清楚的视图标注即可。</p></div>
+                  <div class="concept"><span class="concept-code">NO CHAIN</span><h3>避免封闭尺寸链</h3><p>首尾相接、形成闭合回路的尺寸链会产生过约束。应留出一个“自然形成”的尺寸或改为总体尺寸。</p></div>
+                  <div class="concept"><span class="concept-code">NO INTERSECTION</span><h3>不在交线上标</h3><p>相贯线、截交线是加工自然形成的，不应作为设计尺寸的基准；应标注基本体的轴线、直径或位置。</p></div>
+                </div>
+
+                <div class="rule-box">
+                  <span class="rule-label">NUMBER ORIENTATION</span>
+                  <p>水平尺寸的数字字头朝上；竖直尺寸的数字字头朝左；倾斜尺寸的数字应保持朝上的趋势。尺寸数字不能被任何图线穿过，不可避免时应断开图线。</p>
+                </div>
+              </section>
+
+              <section class="topic" id="dim-pitfalls" data-keywords="标注错误 尺寸链 重复 虚线 箭头 方向 尺寸基准 总体尺寸 交线">
+                <div class="topic-head"><span class="topic-index">4.5</span><h2>标注体检：最常见的失分点</h2></div>
+                <p class="topic-intro">尺寸标注的错误往往不是“少一个数”，而是“多一个数”或“标错位置”。下面每一条都值得在交卷前逐一扫一遍。</p>
+
+                <div class="pitfall">
+                  <div class="pitfall-head">COMMON PITFALLS / 常见错误</div>
+                  <ul>
+                    <li><strong>封闭尺寸链：</strong>总长、分段长度首尾相接，尺寸互相制约；应去掉一个多余尺寸。</li>
+                    <li><strong>重复标注：</strong>同一尺寸在主视图和俯视图各标一次，读图时容易出现矛盾。</li>
+                    <li><strong>在虚线上标注：</strong>被遮挡结构不应作为主要标注对象，应换到可见轮廓或剖视图上。</li>
+                    <li><strong>尺寸线方向错误：</strong>尺寸线没有与被注线段平行，或尺寸界线没有垂直引出。</li>
+                    <li><strong>漏写 φ / R：</strong>直径与半径混淆，直接影响加工尺寸。</li>
+                    <li><strong>在相贯线上标注：</strong>交线是自然形成的，无法直接测量，应标注基本体尺寸和位置。</li>
+                    <li><strong>数字被图线穿过：</strong>尺寸数字不清晰，违反“清晰”要求。</li>
+                  </ul>
+                </div>
+
+                <p class="topic-intro" style="margin-top:18px">想亲手找一次错？打开 <a href="#/train" style="color:var(--accent-ink);border-bottom:1px solid currentColor">识图训练 · 标注纠错</a>，在示意图上点选可疑标注。</p>
+              </section>
+
+              <footer class="chapter-footer">
+                <div class="footer-nav">
+                  <a class="btn btn-secondary btn-small" href="#/learn/section"><svg aria-hidden="true"><use href="#icon-arrow-left"></use></svg> 上一章</a>
+                  <a class="btn btn-secondary btn-small" href="#/learn/precision">下一章：技术要求 <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+                </div>
+                <button class="btn btn-small master-btn" type="button" data-master="dimension"><svg aria-hidden="true"><use href="#icon-check"></use></svg><span>标记本章已掌握</span></button>
+              </footer>
+            </article>
+            <article class="chapter" data-chapter="precision" id="chapter-precision" hidden>
+              <header class="chapter-head" data-figure="05">
+                <span class="eyebrow">CHAPTER 05 · PRECISION</span>
+                <h1>技术要求</h1>
+                <p class="chapter-lead">尺寸告诉你要做多大，技术要求告诉你要做多准。表面粗糙度、尺寸公差与配合、几何公差，是零件图从“形状正确”走向“可制造、可检验”的关键一层。</p>
+                <div class="chapter-tags"><span class="tag">表面粗糙度</span><span class="tag">尺寸公差</span><span class="tag">配合</span><span class="tag">几何公差</span></div>
+              </header>
+
+              <section class="topic" id="tol-roughness" data-keywords="表面粗糙度 Ra Rz 算术平均偏差 符号 去除材料 不去除材料 加工 表面质量">
+                <div class="topic-head"><span class="topic-index">5.1</span><h2>表面粗糙度：微观不平度</h2></div>
+                <p class="topic-intro">表面粗糙度描述加工表面微观峰谷的不平程度。它和尺寸精度不是一回事：尺寸可以很准，但表面仍然可能很粗糙。</p>
+
+                <figure class="figure-card">
+                  <div class="figure-head"><span>FIG. 5-1</span><strong>表面粗糙度与符号</strong><span>Ra 是最常用参数</span></div>
+                  <div class="figure-body">
+                    <svg viewBox="0 0 760 270" role="img" aria-label="表面粗糙度轮廓曲线、Ra标注与基本符号、去除材料符号、不去除材料符号">
+                      <text x="24" y="26" class="svg-text-sm">FIG. 5-1 / SURFACE TEXTURE</text>
+                      <text x="736" y="26" class="svg-text-sm" text-anchor="end">Ra / μm</text>
+
+                      <path class="svg-thin" d="M46 170c8-14 12-14 20 0s12 14 20 0 12-18 20 0 12 12 20 0 12-16 20 0 12 15 20 0 12-20 20 0 12 12 20 0 12-18 20 0 12 16 20 0 12-12 20 0 12 15 20 0 12-18 20 0 12 12 20 0 12-14 20 0"/>
+                      <path class="svg-center" d="M46 164h240"/>
+                      <text x="46" y="196" class="svg-text-sm">实际轮廓</text>
+                      <text x="196" y="156" class="svg-text-sm">中线</text>
+                      <text x="46" y="224" class="svg-text-sm">Ra = 轮廓算术平均偏差</text>
+
+                      <g>
+                        <path class="svg-thin" d="M420 190 455 118M420 190 443 160"/>
+                        <text x="405" y="220" class="svg-text-sm" text-anchor="middle">基本符号</text>
+                      </g>
+                      <g>
+                        <path class="svg-thin" d="M520 190 555 118M520 190 543 160"/>
+                        <path class="svg-thin" d="M549 119h14"/>
+                        <text x="536" y="220" class="svg-text-sm" text-anchor="middle">去除材料</text>
+                      </g>
+                      <g>
+                        <path class="svg-thin" d="M620 190 655 118M620 190 643 160"/>
+                        <circle class="svg-thin" cx="633" cy="154" r="5"/>
+                        <text x="640" y="220" class="svg-text-sm" text-anchor="middle">不去除材料</text>
+                      </g>
+
+                      <text x="450" y="92" class="svg-text-accent">Ra 3.2</text>
+                      <text x="450" y="250" class="svg-text-sm">数值越小 → 表面越光滑 → 一般加工成本越高</text>
+                    </svg>
+                  </div>
+                  <p class="figure-foot"><strong>符号读法：</strong>符号尖端指向被注表面或尺寸界线；Ra 数值写在符号附近。去除材料（如车、铣、磨）与不去除材料（如铸、锻、轧）使用不同的扩展符号。</p>
+                </figure>
+
+                <div class="concept-grid">
+                  <div class="concept"><span class="concept-code">Ra</span><h3>轮廓算术平均偏差</h3><p>最常用的表面粗糙度参数。数值越小，表面越光滑，但通常意味着更高的加工成本。</p></div>
+                  <div class="concept"><span class="concept-code">Rz</span><h3>轮廓最大高度</h3><p>在取样长度内，最大轮廓峰高与最大轮廓谷深的和。对表面峰谷高度更敏感。</p></div>
+                  <div class="concept"><span class="concept-code">UNIT</span><h3>单位与常用值</h3><p>Ra 单位通常为 μm。常见值有 0.8、1.6、3.2、6.3、12.5、25，数值越小越精细。</p></div>
+                  <div class="concept"><span class="concept-code">NOTE</span><h3>统一要求</h3><p>图纸右下角技术要求中可写“其余 Ra 3.2”，表示未单独标注的表面统一按该值验收。</p></div>
+                </div>
+
+                <div class="table-scroll">
+                  <table class="data-table">
+                    <thead><tr><th>Ra 参考值</th><th>典型加工</th><th>读图理解</th></tr></thead>
+                    <tbody>
+                      <tr><td class="mono">0.8 / 1.6</td><td>精磨、研磨、精细车削</td><td>高精度配合面、密封面</td></tr>
+                      <tr><td class="mono">3.2 / 6.3</td><td>精车、精铣、磨削</td><td>一般配合面、重要非配合面</td></tr>
+                      <tr><td class="mono">12.5 / 25</td><td>半精车、粗铣、铸造或锻造</td><td>非配合面、一般外观面</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="topic" id="tol-size" data-keywords="尺寸公差 基本尺寸 实际尺寸 极限尺寸 上偏差 下偏差 公差 IT等级 标准公差 基本偏差">
+                <div class="topic-head"><span class="topic-index">5.2</span><h2>尺寸公差：允许的尺寸波动</h2></div>
+                <p class="topic-intro">加工不可能绝对精确，所以要给尺寸一个允许范围。公差就是上极限尺寸与下极限尺寸之间的差值，表示允许的波动量。</p>
+
+                <div class="table-scroll">
+                  <table class="data-table">
+                    <thead><tr><th>术语</th><th>含义</th><th>孔 / 轴符号</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>基本尺寸</strong></td><td>设计给定的尺寸，如 φ30</td><td>—</td></tr>
+                      <tr><td><strong>实际尺寸</strong></td><td>加工后实际测量得到的尺寸</td><td>—</td></tr>
+                      <tr><td><strong>上偏差</strong></td><td>上极限尺寸减基本尺寸</td><td><span class="mono">ES / es</span></td></tr>
+                      <tr><td><strong>下偏差</strong></td><td>下极限尺寸减基本尺寸</td><td><span class="mono">EI / ei</span></td></tr>
+                      <tr><td><strong>公差</strong></td><td>上偏差减下偏差，恒为正值</td><td><span class="mono">T = ES − EI</span></td></tr>
+                      <tr><td><strong>标准公差等级</strong></td><td>IT01～IT18，数字越小精度越高</td><td><span class="mono">IT6 / IT7 …</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="formula-strip">
+                  <div><small>HOLE</small><strong>T = ES − EI</strong></div>
+                  <div><small>SHAFT</small><strong>T = es − ei</strong></div>
+                  <div><small>READ</small><strong>φ30 H7</strong></div>
+                </div>
+
+                <ul class="clean-list">
+                  <li><strong>孔用大写：</strong>H7、K7、P7；<strong>轴用小写：</strong>h6、g6、k6、p6。看到字母大小写，先判断是孔还是轴。</li>
+                  <li><strong>基本偏差：</strong>决定公差带相对零线的位置；标准公差等级决定公差带宽度。</li>
+                  <li><strong>基孔制：</strong>孔的基本偏差为 H（下偏差为 0），与不同轴配合；<strong>基轴制：</strong>轴的基本偏差为 h（上偏差为 0）。</li>
+                  <li><strong>优先采用基孔制：</strong>因为加工孔通常比加工轴难，固定孔的公差带更经济。</li>
+                </ul>
+
+                <div class="note-box"><strong>极限偏差标注：</strong>φ30H7 可写成 φ30<sup>+0.021</sup><sub>0</sub>；φ30g6 可写成 φ30<sup>−0.007</sup><sub>−0.020</sub>。H7/g6 是配合代号，不是两个孤立尺寸。</div>
+              </section>
+
+              <section class="topic" id="tol-fit" data-keywords="配合 间隙配合 过渡配合 过盈配合 基孔制 基轴制 H7 g6 k6 p6 最大间隙 最大过盈">
+                <div class="topic-head"><span class="topic-index">5.3</span><h2>配合：孔与轴的三种关系</h2></div>
+                <p class="topic-intro">配合描述同一基本尺寸的孔与轴装配后的松紧关系。根据公差带相对位置，分为间隙配合、过渡配合和过盈配合。</p>
+
+                <div class="concept-grid">
+                  <div class="concept"><span class="concept-code">CLEARANCE</span><h3>间隙配合</h3><p>孔的公差带完全在轴的公差带之上，装配后总有间隙。示例：φ30H7/g6、φ30H7/h6。</p></div>
+                  <div class="concept"><span class="concept-code">TRANSITION</span><h3>过渡配合</h3><p>孔与轴公差带部分重叠，可能出现间隙，也可能出现过盈。示例：φ30H7/k6。</p></div>
+                  <div class="concept"><span class="concept-code">INTERFERENCE</span><h3>过盈配合</h3><p>孔的公差带完全在轴的公差带之下，装配后总有过盈。示例：φ30H7/p6。</p></div>
+                  <div class="concept"><span class="concept-code">BASE</span><h3>基孔制 / 基轴制</h3><p>H7/g6 中的 H7 为基准孔，属于基孔制；h6 为基准轴。配合代号先写孔，后写轴。</p></div>
+                </div>
+
+                <div class="rule-box">
+                  <span class="rule-label">QUICK JUDGE</span>
+                  <p><strong>看公差带谁在上面。</strong>孔在上、轴在下 → 间隙；部分重叠 → 过渡；孔在下、轴在上 → 过盈。拿不准时，用<a href="#/train" style="color:var(--accent-ink);border-bottom:1px solid currentColor">配合速判器</a>把公差带画出来。</p>
+                </div>
+
+                <div class="table-scroll">
+                  <table class="data-table">
+                    <thead><tr><th>配合代号</th><th>类型</th><th>计算要点</th><th>典型用途</th></tr></thead>
+                    <tbody>
+                      <tr><td class="mono">φ30 H7/g6</td><td>间隙配合</td><td>Xmax = ES − ei；Xmin = EI − es</td><td>滑动轴承、导向配合</td></tr>
+                      <tr><td class="mono">φ30 H7/h6</td><td>间隙配合</td><td>最小间隙为 0</td><td>定位、可拆连接</td></tr>
+                      <tr><td class="mono">φ30 H7/k6</td><td>过渡配合</td><td>可能间隙，也可能过盈</td><td>定位销、精密连接</td></tr>
+                      <tr><td class="mono">φ30 H7/p6</td><td>过盈配合</td><td>Ymax = es − EI；Ymin = ei − ES</td><td>传递扭矩、不拆连接</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="topic" id="tol-geo" data-keywords="几何公差 形位公差 直线度 平面度 圆度 圆柱度 平行度 垂直度 倾斜度 位置度 同轴度 对称度 圆跳动 全跳动 基准 框格">
+                <div class="topic-head"><span class="topic-index">5.4</span><h2>几何公差：控制形状与位置</h2></div>
+                <p class="topic-intro">尺寸公差控制“大小”，几何公差控制“形状和位置”。一个零件即使尺寸合格，也可能因为弯曲、偏心或倾斜而无法装配。</p>
+
+                <div class="table-scroll">
+                  <table class="data-table">
+                    <thead><tr><th>类别</th><th>项目</th><th>是否需要基准</th><th>控制对象</th></tr></thead>
+                    <tbody>
+                      <tr><td rowspan="4"><strong>形状公差</strong></td><td>直线度</td><td>通常不需要</td><td>直线要素的弯曲</td></tr>
+                      <tr><td>平面度</td><td>不需要</td><td>平面的高低起伏</td></tr>
+                      <tr><td>圆度</td><td>不需要</td><td>回转截面的圆度</td></tr>
+                      <tr><td>圆柱度</td><td>不需要</td><td>圆柱面的综合形状</td></tr>
+                      <tr><td rowspan="2"><strong>轮廓公差</strong></td><td>线轮廓度</td><td>视标注方式</td><td>曲线轮廓相对理论轮廓</td></tr>
+                      <tr><td>面轮廓度</td><td>视标注方式</td><td>曲面轮廓相对理论轮廓</td></tr>
+                      <tr><td rowspan="3"><strong>方向公差</strong></td><td>平行度</td><td>需要</td><td>要素相对基准的平行程度</td></tr>
+                      <tr><td>垂直度</td><td>需要</td><td>要素相对基准的垂直程度</td></tr>
+                      <tr><td>倾斜度</td><td>需要</td><td>要素相对基准的倾斜角度</td></tr>
+                      <tr><td rowspan="3"><strong>位置公差</strong></td><td>位置度</td><td>需要</td><td>要素相对理论位置的偏移</td></tr>
+                      <tr><td>同轴度</td><td>需要</td><td>轴线相对基准轴线的偏心</td></tr>
+                      <tr><td>对称度</td><td>需要</td><td>要素相对基准中心面的偏移</td></tr>
+                      <tr><td rowspan="2"><strong>跳动公差</strong></td><td>圆跳动</td><td>需要</td><td>回转一周的跳动量</td></tr>
+                      <tr><td>全跳动</td><td>需要</td><td>整个表面的综合跳动</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="rule-box">
+                  <span class="rule-label">FRAME</span>
+                  <p><strong>几何公差框格通常分为三格：</strong>第一格写特征符号，第二格写公差值（若公差带为圆柱形，数值前加 φ），第三格及以后写基准字母。形状公差通常没有基准格。</p>
+                </div>
+
+                <ul class="clean-list">
+                  <li><strong>基准：</strong>用方框字母 A、B、C 标注，基准符号要与被测要素建立明确联系。</li>
+                  <li><strong>箭头：</strong>指引线箭头指向被测要素；当被测要素是轴线时，箭头可指向尺寸线。</li>
+                  <li><strong>公差带：</strong>公差值是公差带的宽度或直径，不是“允许的偏差 ±值”。</li>
+                  <li><strong>读法示例：</strong>“⊥ | 0.05 | A”表示该要素相对基准 A 的垂直度公差为 0.05 mm。</li>
+                </ul>
+
+                <div class="note-box"><strong>常见混淆：</strong>同轴度、对称度、位置度属于位置公差，通常需要基准；圆度、圆柱度属于形状公差，通常不需要基准。看到框格第三格是否有字母，就能快速判断。</div>
+              </section>
+
+              <section class="topic" id="tol-notes" data-keywords="技术要求 未注公差 未注粗糙度 材料 热处理 表面处理 标题栏 图纸说明">
+                <div class="topic-head"><span class="topic-index">5.5</span><h2>技术要求怎么写、怎么读</h2></div>
+                <p class="topic-intro">技术要求通常写在标题栏上方或图纸空白处，用文字补充图纸上难以直接标注的内容。读图时，它和视图、尺寸同等重要。</p>
+
+                <ul class="clean-list">
+                  <li><strong>材料与热处理：</strong>如“45 钢，调质处理 220～250 HBW”。</li>
+                  <li><strong>未注公差：</strong>如“未注尺寸公差按 GB/T 1804-m”。</li>
+                  <li><strong>未注粗糙度：</strong>如“其余表面 Ra 3.2”。</li>
+                  <li><strong>表面处理：</strong>如发黑、镀锌、喷涂、阳极氧化等。</li>
+                  <li><strong>质量要求：</strong>如“铸件不得有砂眼、气孔”“去除毛刺、锐边倒钝”。</li>
+                  <li><strong>装配要求：</strong>如配合间隙、预紧力、密封性、试验压力等。</li>
+                </ul>
+
+                <div class="pitfall">
+                  <div class="pitfall-head">COMMON PITFALLS / 常见错误</div>
+                  <ul>
+                    <li><strong>把 Ra 当作尺寸公差：</strong>Ra 控制表面微观不平度，不控制尺寸大小。</li>
+                    <li><strong>认为 Ra 越小越好：</strong>应满足功能即可，过度提高表面质量会显著增加成本。</li>
+                    <li><strong>忽略“其余”要求：</strong>未单独标注的表面可能由统一技术要求控制。</li>
+                    <li><strong>把过渡配合当成过盈：</strong>过渡配合可能出现间隙，也可能出现过盈，不能一概而论。</li>
+                    <li><strong>形状公差加基准：</strong>圆度、平面度等通常不需要基准，框格中不应机械照抄。</li>
+                  </ul>
+                </div>
+              </section>
+
+              <footer class="chapter-footer">
+                <div class="footer-nav">
+                  <a class="btn btn-secondary btn-small" href="#/learn/dimension"><svg aria-hidden="true"><use href="#icon-arrow-left"></use></svg> 上一章</a>
+                  <a class="btn btn-secondary btn-small" href="#/learn/standards">下一章：标准件与常用件 <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+                </div>
+                <button class="btn btn-small master-btn" type="button" data-master="precision"><svg aria-hidden="true"><use href="#icon-check"></use></svg><span>标记本章已掌握</span></button>
+              </footer>
+            </article>
+            <article class="chapter" data-chapter="standards" id="chapter-standards" hidden>
+              <header class="chapter-head" data-figure="06">
+                <span class="eyebrow">CHAPTER 06 · STANDARD PARTS</span>
+                <h1>标准件与常用件</h1>
+                <p class="chapter-lead">螺纹、键、销、轴承、齿轮和弹簧，都有标准化的画法与标记。读图时不需要重新发明它们，只需要准确解码代号，并知道哪些结构会影响装配。</p>
+                <div class="chapter-tags"><span class="tag">螺纹标记</span><span class="tag">键 / 销 / 轴承</span><span class="tag">齿轮参数</span><span class="tag">工艺结构</span></div>
+              </header>
+
+              <section class="topic" id="std-thread" data-keywords="螺纹 M 普通螺纹 Tr 梯形螺纹 G 管螺纹 螺距 左旋 右旋 公差带 旋合长度 外螺纹 内螺纹 画法">
+                <div class="topic-head"><span class="topic-index">6.1</span><h2>螺纹：从标记读出全部信息</h2></div>
+                <p class="topic-intro">螺纹标记是一串高度压缩的信息。以 M20×2 LH–6g 为例，它同时说明了牙型、公称直径、螺距、旋向和公差带。</p>
+
+                <figure class="figure-card">
+                  <div class="figure-head"><span>FIG. 6-1</span><strong>螺纹标记拆解</strong><span>M20×2 LH–6g</span></div>
+                  <div class="figure-body">
+                    <svg viewBox="0 0 760 300" role="img" aria-label="普通螺纹标记M20乘2左旋6g的逐段解释，以及60度牙型角示意">
+                      <text x="24" y="26" class="svg-text-sm">FIG. 6-1 / THREAD DESIGNATION</text>
+                      <text x="736" y="26" class="svg-text-sm" text-anchor="end">ISO / GB</text>
+
+                      <text x="62" y="112" style="font-family:var(--mono);fill:var(--accent-ink)" font-size="34" font-weight="600">M</text>
+                      <text x="116" y="112" style="font-family:var(--mono);fill:var(--ink)" font-size="34" font-weight="600">20</text>
+                      <text x="174" y="112" style="font-family:var(--mono);fill:var(--ink)" font-size="26">×</text>
+                      <text x="198" y="112" style="font-family:var(--mono);fill:var(--ink)" font-size="34" font-weight="600">2</text>
+                      <text x="246" y="112" style="font-family:var(--mono);fill:var(--blue)" font-size="28" font-weight="600">LH</text>
+                      <text x="304" y="112" style="font-family:var(--mono);fill:var(--ink)" font-size="28">−</text>
+                      <text x="328" y="112" style="font-family:var(--mono);fill:var(--green)" font-size="30" font-weight="600">6g</text>
+
+                      <g class="svg-dim">
+                        <path d="M72 124v38M126 124v38M208 124v38M258 124v38M340 124v38"/>
+                      </g>
+                      <text x="72" y="174" class="svg-text-sm" text-anchor="middle">普通螺纹</text>
+                      <text x="126" y="174" class="svg-text-sm" text-anchor="middle">公称直径 20</text>
+                      <text x="208" y="174" class="svg-text-sm" text-anchor="middle">细牙螺距 2</text>
+                      <text x="258" y="174" class="svg-text-sm" text-anchor="middle">左旋</text>
+                      <text x="340" y="174" class="svg-text-sm" text-anchor="middle">公差带 6g</text>
+
+                      <path class="svg-ghost" d="M40 196h460"/>
+                      <text x="40" y="222" class="svg-text-sm">粗牙螺纹不标螺距；右旋螺纹不标旋向；中等旋合长度通常不标长度代号。</text>
+                      <text x="40" y="240" class="svg-text-sm">外螺纹公差带用小写字母，内螺纹公差带用大写字母。</text>
+
+                      <g transform="translate(545 60)">
+                        <path class="svg-ghost" d="M0 0h150v170H0Z"/>
+                        <path class="svg-line" d="M20 130 75 55 130 130"/>
+                        <path class="svg-thin" d="M20 130h110"/>
+                        <path class="svg-dim" d="M75 55 75 130"/>
+                        <text x="75" y="150" class="svg-text-sm" text-anchor="middle">60° 牙型角</text>
+                        <text x="75" y="24" class="svg-text-sm" text-anchor="middle">普通螺纹</text>
+                      </g>
+                    </svg>
+                  </div>
+                  <p class="figure-foot"><strong>读法：</strong>M20×2 LH–6g = 普通螺纹，公称直径 20 mm，细牙螺距 2 mm，左旋，外螺纹公差带 6g。若是 M20–6g，则表示粗牙普通螺纹，不标螺距。</p>
+                </figure>
+
+                <div class="table-scroll">
+                  <table class="data-table">
+                    <thead><tr><th>牙型 / 类型</th><th>标记示例</th><th>用途与特点</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>普通螺纹</strong></td><td class="mono">M20、M20×2</td><td>连接用，牙型角 60°，粗牙与细牙</td></tr>
+                      <tr><td><strong>梯形螺纹</strong></td><td class="mono">Tr40×7</td><td>传动用，牙型角 30°，承载能力强</td></tr>
+                      <tr><td><strong>锯齿形螺纹</strong></td><td class="mono">B40×7</td><td>单向传动，承受单向轴向力</td></tr>
+                      <tr><td><strong>管螺纹</strong></td><td class="mono">G1/2、Rc1/2</td><td>管道连接，标记中的尺寸通常指管的内径近似值，不是螺纹外径</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="concept-grid">
+                  <div class="concept"><span class="concept-code">EXTERNAL</span><h3>外螺纹画法</h3><p>大径用粗实线，小径用细实线；螺纹终止线用粗实线。小径通常在端部画入倒角内。</p></div>
+                  <div class="concept"><span class="concept-code">INTERNAL</span><h3>内螺纹画法</h3><p>小径用粗实线，大径用细实线；剖开时剖面线画到小径（粗实线）处。</p></div>
+                  <div class="concept"><span class="concept-code">ASSEMBLY</span><h3>旋合画法</h3><p>内外螺纹旋合部分按外螺纹画法表达，其余部分按各自画法；标准件纵向剖切通常不剖。</p></div>
+                  <div class="concept"><span class="concept-code">LENGTH</span><h3>旋合长度</h3><p>短、中、长旋合长度分别用 S、N、L 表示；中等旋合长度 N 通常省略不标。</p></div>
+                </div>
+              </section>
+
+              <section class="topic" id="std-parts" data-keywords="键 平键 销 滚动轴承 6208 齿轮 模数 齿数 分度圆 齿顶圆 齿根圆 弹簧 标记">
+                <div class="topic-head"><span class="topic-index">6.2</span><h2>键、销、轴承、齿轮与弹簧</h2></div>
+                <p class="topic-intro">标准件的画法可以简化，但代号与参数必须准确。尤其是轴承内径代号、齿轮模数、键槽尺寸，都会直接决定装配能否成功。</p>
+
+                <div class="table-scroll">
+                  <table class="data-table">
+                    <thead><tr><th>零件</th><th>典型标记</th><th>读法</th><th>关键参数</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>普通平键</strong></td><td class="mono">键 8×7×40 GB/T 1096</td><td>宽 8、高 7、长 40</td><td>键宽 b、键高 h、键长 L</td></tr>
+                      <tr><td><strong>圆柱销</strong></td><td class="mono">销 8×30 GB/T 119.1</td><td>直径 8、长度 30</td><td>销孔配合与定位精度</td></tr>
+                      <tr><td><strong>深沟球轴承</strong></td><td class="mono">6208</td><td>6 型、02 尺寸系列、内径 40</td><td>内径、外径、宽度、额定载荷</td></tr>
+                      <tr><td><strong>直齿圆柱齿轮</strong></td><td class="mono">m=3，z=20</td><td>模数 3、齿数 20</td><td>分度圆、齿顶圆、齿根圆、中心距</td></tr>
+                      <tr><td><strong>圆柱螺旋弹簧</strong></td><td class="mono">d=2，D=20，n=8</td><td>簧丝直径、中径、有效圈数</td><td>节距、自由高度、旋向</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="formula-strip">
+                  <div><small>PITCH DIAMETER</small><strong>d = m z</strong></div>
+                  <div><small>TIP DIAMETER</small><strong>d<sub>a</sub> = m(z + 2)</strong></div>
+                  <div><small>ROOT DIAMETER</small><strong>d<sub>f</sub> = m(z − 2.5)</strong></div>
+                  <div style="border-right:0"><small>CENTER DISTANCE</small><strong>a = m(z₁+z₂)/2</strong></div>
+                </div>
+
+                <div class="note-box"><strong>轴承 6208 的内径：</strong>内径代号 08 表示 8×5 = 40 mm。内径代号 00、01、02、03 分别对应 10、12、15、17 mm；04 及以上按“代号×5”计算。</div>
+
+                <ul class="clean-list">
+                  <li><strong>齿轮：</strong>标准直齿圆柱齿轮的模数 m 与齿数 z 是基本参数；分度圆是设计、制造和测量的基准圆。</li>
+                  <li><strong>键：</strong>平键连接靠键的侧面传递扭矩，键槽宽度和深度是关键配合尺寸。</li>
+                  <li><strong>销：</strong>主要用于定位或连接，销孔通常需要铰制，配合精度较高。</li>
+                  <li><strong>弹簧：</strong>标记中要关注簧丝直径、中径、有效圈数、旋向和自由高度。</li>
+                </ul>
+              </section>
+
+              <section class="topic" id="std-structure" data-keywords="倒角 退刀槽 越程槽 中心孔 圆角 键槽 工艺结构 装配结构">
+                <div class="topic-head"><span class="topic-index">6.3</span><h2>工艺结构：小结构，大作用</h2></div>
+                <p class="topic-intro">倒角、退刀槽、中心孔、圆角这些结构尺寸不大，却直接影响加工可行性、装配安全和疲劳寿命。</p>
+
+                <div class="concept-grid">
+                  <div class="concept"><span class="concept-code">CHAMFER</span><h3>倒角</h3><p>去除锐边，便于装配并避免划伤。常见标注 C2 或 2×45°；轴端、孔口通常都要倒角。</p></div>
+                  <div class="concept"><span class="concept-code">RELIEF</span><h3>退刀槽 / 越程槽</h3><p>给刀具留出退出空间，保证螺纹、磨削或车削加工到底。尺寸需按标准或工艺要求标注。</p></div>
+                  <div class="concept"><span class="concept-code">CENTER HOLE</span><h3>中心孔</h3><p>轴类零件加工时用于定位和支承。中心孔有标准型式，图纸上常用简化标记。</p></div>
+                  <div class="concept"><span class="concept-code">FILLET</span><h3>圆角</h3><p>降低应力集中，提高强度。圆角与倒角不同：圆角是圆弧过渡，倒角是斜面切除。</p></div>
+                  <div class="concept"><span class="concept-code">KEYWAY</span><h3>键槽</h3><p>键槽宽度、深度和位置要与键的标记对应；轴槽与轮毂槽的尺寸体系不同。</p></div>
+                  <div class="concept"><span class="concept-code">CLEARANCE</span><h3>装配让位</h3><p>轴肩、孔口、螺纹末端常需留出让位结构，避免两个零件在拐角处干涉。</p></div>
+                </div>
+
+                <div class="rule-box">
+                  <span class="rule-label">READ THE DETAILS</span>
+                  <p>标准件和工艺结构往往藏在<strong>局部放大图、简化画法和技术要求</strong>里。读图时不要只看主轮廓，局部细节才是装配失败的常见原因。</p>
+                </div>
+              </section>
+
+              <section class="topic" id="std-pitfalls" data-keywords="螺纹错误 内外螺纹 粗细线 左旋右旋 轴承内径 齿轮公式 标准件 剖切">
+                <div class="topic-head"><span class="topic-index">6.4</span><h2>标准件高频错误</h2></div>
+                <p class="topic-intro">标准件的错误通常很“整齐”：粗细线画反、左右旋看反、内径代号算错。交卷前用下面清单快速核对。</p>
+
+                <div class="pitfall">
+                  <div class="pitfall-head">COMMON PITFALLS / 常见错误</div>
+                  <ul>
+                    <li><strong>内外螺纹粗细线画反：</strong>外螺纹大径粗、小径细；内螺纹小径粗、大径细。</li>
+                    <li><strong>把 LH 看成细牙：</strong>LH 表示左旋，细牙通过标注螺距表示。</li>
+                    <li><strong>管螺纹按外径读：</strong>G1/2 等标记中的尺寸是管道公称尺寸，不等于螺纹大径。</li>
+                    <li><strong>轴承内径代号算错：</strong>6208 的内径是 40 mm，不是 8 mm 或 62 mm。</li>
+                    <li><strong>齿轮齿顶圆公式记错：</strong>标准直齿圆柱齿轮 d<sub>a</sub> = m(z+2)，不是 mz。</li>
+                    <li><strong>标准件纵向剖开：</strong>螺栓、螺母、销等沿纵向剖切时通常不剖。</li>
+                  </ul>
+                </div>
+              </section>
+
+              <footer class="chapter-footer">
+                <div class="footer-nav">
+                  <a class="btn btn-secondary btn-small" href="#/learn/precision"><svg aria-hidden="true"><use href="#icon-arrow-left"></use></svg> 上一章</a>
+                  <a class="btn btn-secondary btn-small" href="#/learn/assembly">下一章：零件图与装配图 <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+                </div>
+                <button class="btn btn-small master-btn" type="button" data-master="standards"><svg aria-hidden="true"><use href="#icon-check"></use></svg><span>标记本章已掌握</span></button>
+              </footer>
+            </article>
+            <article class="chapter" data-chapter="assembly" id="chapter-assembly" hidden>
+              <header class="chapter-head" data-figure="07">
+                <span class="eyebrow">CHAPTER 07 · PARTS & ASSEMBLY</span>
+                <h1>零件图与装配图</h1>
+                <p class="chapter-lead">零件图回答“这个零件怎么做”，装配图回答“这些零件怎么装成机器”。从零件到部件，读图的对象变了，但投影、标注与技术要求的基本功没有变。</p>
+                <div class="chapter-tags"><span class="tag">零件图四项</span><span class="tag">装配图</span><span class="tag">序号 / 明细栏</span><span class="tag">拆画零件</span></div>
+              </header>
+
+              <section class="topic" id="assy-part" data-keywords="零件图 一组视图 尺寸 技术要求 标题栏 读零件图 结构分析 尺寸基准 加工">
+                <div class="topic-head"><span class="topic-index">7.1</span><h2>零件图：制造成零件的完整指令</h2></div>
+                <p class="topic-intro">一张完整的零件图必须包含四项内容：一组视图、完整的尺寸、技术要求、标题栏。少任何一项，都不能独立指导生产。</p>
+
+                <div class="concept-grid">
+                  <div class="concept"><span class="concept-code">VIEWS</span><h3>一组视图</h3><p>用基本视图、剖视图、断面图、局部放大图等，完整、清晰地表达零件的内外形状。</p></div>
+                  <div class="concept"><span class="concept-code">DIMENSIONS</span><h3>完整的尺寸</h3><p>定形、定位、总体尺寸齐全，基准明确，符合加工和测量要求。</p></div>
+                  <div class="concept"><span class="concept-code">REQUIREMENTS</span><h3>技术要求</h3><p>表面粗糙度、尺寸公差、几何公差、材料与热处理、表面处理等。</p></div>
+                  <div class="concept"><span class="concept-code">TITLE BLOCK</span><h3>标题栏</h3><p>零件名称、图号、材料、比例、绘图与审核信息，是读图的入口。</p></div>
+                </div>
+
+                <ol class="clean-list">
+                  <li><strong>看标题栏：</strong>确认零件名称、材料、比例和所属部件，建立功能预期。</li>
+                  <li><strong>分析视图：</strong>找出主视图，判断投射方向，用三等规律对齐各视图。</li>
+                  <li><strong>想象形状：</strong>结合剖视、断面和局部放大图，先整体后局部，先外形后内形。</li>
+                  <li><strong>读尺寸基准：</strong>找出主要基准和辅助基准，区分定形、定位、总体尺寸。</li>
+                  <li><strong>读技术要求：</strong>重点关注配合面、密封面、关键尺寸的粗糙度与公差。</li>
+                  <li><strong>核对加工可行性：</strong>思考这个零件如何装夹、如何加工、如何测量，检查是否有无法实现的结构。</li>
+                </ol>
+
+                <div class="rule-box">
+                  <span class="rule-label">PART DRAWING</span>
+                  <p><strong>零件图的“完整”不是“画满”，而是“没有歧义”。</strong>一个尺寸只要能唯一确定结构，就不应重复；一个结构只要能清晰表达，就不必堆叠视图。</p>
+                </div>
+              </section>
+
+              <section class="topic" id="assy-drawing" data-keywords="装配图 一组视图 必要尺寸 序号 明细栏 技术要求 标题栏 规格尺寸 装配尺寸 安装尺寸 总体尺寸">
+                <div class="topic-head"><span class="topic-index">7.2</span><h2>装配图：表达零件之间的关系</h2></div>
+                <p class="topic-intro">装配图不要求把每个零件都画得像零件图那样完整，而是重点表达零件之间的装配关系、相对位置、连接方式和运动关系。</p>
+
+                <figure class="figure-card">
+                  <div class="figure-head"><span>FIG. 7-1</span><strong>轴系装配示意</strong><span>序号与剖面线帮助区分零件</span></div>
+                  <div class="figure-body">
+                    <svg viewBox="0 0 760 350" role="img" aria-label="轴系装配示意图，包含端盖、轴承、轴、箱体和密封圈，并用序号标注">
+                      <defs>
+                        <pattern id="assy-hatch-a" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                          <line x1="0" y1="0" x2="0" y2="9" stroke-width="0.9" style="stroke:var(--muted)"/>
+                        </pattern>
+                        <pattern id="assy-hatch-b" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
+                          <line x1="0" y1="0" x2="0" y2="7" stroke-width="0.9" style="stroke:var(--muted)"/>
+                        </pattern>
+                      </defs>
+                      <text x="24" y="26" class="svg-text-sm">FIG. 7-1 / SHAFT ASSEMBLY · SECTION A—A</text>
+                      <text x="736" y="26" class="svg-text-sm" text-anchor="end">示意</text>
+
+                      <rect x="205" y="70" width="330" height="90" fill="url(#assy-hatch-a)" stroke-width="2" style="stroke:var(--ink)"/>
+                      <rect x="205" y="210" width="330" height="90" fill="url(#assy-hatch-a)" stroke-width="2" style="stroke:var(--ink)"/>
+                      <rect class="svg-line" x="80" y="165" width="600" height="40"/>
+                      <path class="svg-center" d="M60 185h650"/>
+
+                      <g>
+                        <rect x="250" y="140" width="60" height="25" fill="url(#assy-hatch-b)" stroke-width="1.4" style="stroke:var(--ink)"/>
+                        <rect x="250" y="205" width="60" height="25" fill="url(#assy-hatch-b)" stroke-width="1.4" style="stroke:var(--ink)"/>
+                        <circle class="svg-thin" cx="266" cy="152" r="5"/>
+                        <circle class="svg-thin" cx="294" cy="152" r="5"/>
+                        <circle class="svg-thin" cx="266" cy="218" r="5"/>
+                        <circle class="svg-thin" cx="294" cy="218" r="5"/>
+                      </g>
+
+                      <g>
+                        <rect x="188" y="118" width="30" height="64" fill="url(#assy-hatch-b)" stroke-width="1.4" style="stroke:var(--ink)"/>
+                        <rect x="188" y="188" width="30" height="64" fill="url(#assy-hatch-b)" stroke-width="1.4" style="stroke:var(--ink)"/>
+                        <path class="svg-thin" d="M188 130h30M188 238h30"/>
+                      </g>
+
+                      <g>
+                        <rect x="510" y="140" width="24" height="45" stroke-width="1.3" style="fill:var(--surface-3);stroke:var(--ink)"/>
+                        <rect x="510" y="185" width="24" height="45" stroke-width="1.3" style="fill:var(--surface-3);stroke:var(--ink)"/>
+                        <path class="svg-thin" d="M516 143v84M528 143v84"/>
+                      </g>
+
+                      <g class="svg-dim">
+                        <path d="M270 140 230 100"/>
+                        <path d="M225 70 170 55"/>
+                        <path d="M520 140 575 95"/>
+                        <path d="M630 205 680 240"/>
+                        <path d="M190 118 130 100"/>
+                      </g>
+                      <g>
+                        <circle cx="230" cy="100" r="11" stroke-width="1.2" style="fill:var(--surface);stroke:var(--accent)"/><text x="230" y="104" class="svg-text-accent" text-anchor="middle">2</text>
+                        <circle cx="170" cy="55" r="11" stroke-width="1.2" style="fill:var(--surface);stroke:var(--accent)"/><text x="170" y="59" class="svg-text-accent" text-anchor="middle">4</text>
+                        <circle cx="575" cy="95" r="11" stroke-width="1.2" style="fill:var(--surface);stroke:var(--accent)"/><text x="575" y="99" class="svg-text-accent" text-anchor="middle">5</text>
+                        <circle cx="680" cy="240" r="11" stroke-width="1.2" style="fill:var(--surface);stroke:var(--accent)"/><text x="680" y="244" class="svg-text-accent" text-anchor="middle">3</text>
+                        <circle cx="130" cy="100" r="11" stroke-width="1.2" style="fill:var(--surface);stroke:var(--accent)"/><text x="130" y="104" class="svg-text-accent" text-anchor="middle">1</text>
+                      </g>
+
+                      <text x="205" y="330" class="svg-text-sm">1 端盖　2 深沟球轴承　3 轴　4 箱体　5 密封圈</text>
+                      <text x="80" y="290" class="svg-text-sm">剖面线方向相反 / 间隔不同 → 相邻零件</text>
+                      <text x="80" y="308" class="svg-text-sm">序号指引线从可见轮廓引出，圆圈内写序号</text>
+                    </svg>
+                  </div>
+                  <p class="figure-foot"><strong>读图顺序：</strong>先用剖面线和序号分开零件，再判断轴、轴承、端盖、箱体的装配关系；最后看配合尺寸和密封结构。</p>
+                </figure>
+
+                <div class="concept-grid">
+                  <div class="concept"><span class="concept-code">SPEC</span><h3>规格 / 性能尺寸</h3><p>表示部件规格、性能或工作能力的尺寸，如中心距、孔径、流量、承载能力。</p></div>
+                  <div class="concept"><span class="concept-code">ASSEMBLY</span><h3>装配尺寸</h3><p>表示零件之间装配关系的尺寸，包括配合尺寸和相对位置尺寸。</p></div>
+                  <div class="concept"><span class="concept-code">INSTALL</span><h3>安装尺寸</h3><p>部件安装在基础上或与其他部件连接所需的尺寸，如地脚孔距、安装孔直径。</p></div>
+                  <div class="concept"><span class="concept-code">OVERALL</span><h3>总体尺寸</h3><p>部件的总长、总宽、总高，用于包装、运输和空间布置。</p></div>
+                </div>
+
+                <div class="table-scroll">
+                  <table class="data-table">
+                    <thead><tr><th>序号</th><th>名称</th><th>数量</th><th>材料</th><th>备注</th></tr></thead>
+                    <tbody>
+                      <tr><td>1</td><td>端盖</td><td>1</td><td>HT200</td><td>与箱体配合</td></tr>
+                      <tr><td>2</td><td>深沟球轴承</td><td>1</td><td>标准件</td><td>6208</td></tr>
+                      <tr><td>3</td><td>轴</td><td>1</td><td>45 钢</td><td>调质</td></tr>
+                      <tr><td>4</td><td>箱体</td><td>1</td><td>HT200</td><td>—</td></tr>
+                      <tr><td>5</td><td>密封圈</td><td>1</td><td>标准件</td><td>—</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="note-box"><strong>装配图尺寸不是越多越好：</strong>装配图主要表达装配关系，零件尺寸通常由零件图提供。装配图上只标必要的规格、装配、安装、总体和其他重要尺寸。</div>
+              </section>
+
+              <section class="topic" id="assy-read" data-keywords="序号 明细栏 指引线 顺时针 逆时针 自下而上 标题栏 装配关系 工作原理 拆画零件图">
+                <div class="topic-head"><span class="topic-index">7.3</span><h2>序号与明细栏：装配图的索引系统</h2></div>
+                <p class="topic-intro">装配图零件多、线条密，必须依靠序号和明细栏建立索引。序号是视图中的“指针”，明细栏是整张图的“零件清单”。</p>
+
+                <ul class="clean-list">
+                  <li><strong>序号指引线：</strong>从零件的可见轮廓内引出，末端用圆点或箭头指向零件；不要与剖面线平行，也不要穿过多个零件。</li>
+                  <li><strong>序号排列：</strong>序号应按顺时针或逆时针方向整齐排列，便于按顺序查找。</li>
+                  <li><strong>序号字高：</strong>一般比图中尺寸数字大一号，保证醒目。</li>
+                  <li><strong>明细栏：</strong>位于标题栏上方，自下而上填写；内容包括序号、代号、名称、数量、材料、备注。</li>
+                  <li><strong>一一对应：</strong>视图中的序号必须与明细栏完全一致，不能出现“有号无栏”或“有栏无号”。</li>
+                </ul>
+
+                <div class="rule-box">
+                  <span class="rule-label">DETAIL TABLE</span>
+                  <p><strong>明细栏自下而上填写：</strong>最下面一行对应序号 1，向上依次增加。读图时从标题栏向上看，就能按序号顺序找到每个零件。</p>
+                </div>
+              </section>
+
+              <section class="topic" id="assy-checklist" data-keywords="读装配图 拆画零件图 分离零件 补线 尺寸 技术要求 装配关系 工作原理 装配图步骤">
+                <div class="topic-head"><span class="topic-index">7.4</span><h2>读装配图与拆画零件图</h2></div>
+                <p class="topic-intro">读装配图的目标不是“看懂所有线条”，而是弄清：有哪些零件、它们如何连接、如何运动、哪些尺寸决定装配。拆画零件图则是在此基础上还原单个零件。</p>
+
+                <div class="concept-grid">
+                  <div class="concept"><span class="concept-code">STEP 01</span><h3>看标题栏与明细栏</h3><p>先知道部件名称、用途、零件数量和材料，建立整体功能框架。</p></div>
+                  <div class="concept"><span class="concept-code">STEP 02</span><h3>分析视图</h3><p>找出主视图和剖视方向，用剖面线、序号和轮廓区分各个零件。</p></div>
+                  <div class="concept"><span class="concept-code">STEP 03</span><h3>理装配关系</h3><p>判断轴、孔、轴承、端盖、密封件之间的配合、定位、连接和运动关系。</p></div>
+                  <div class="concept"><span class="concept-code">STEP 04</span><h3>拆画零件</h3><p>分离目标零件的轮廓，补全被遮挡的线条，再标注尺寸和技术要求。</p></div>
+                </div>
+
+                <ol class="clean-list">
+                  <li><strong>分离零件：</strong>根据剖面线方向、间隔、序号和装配关系，把目标零件从装配图中“抽”出来。</li>
+                  <li><strong>补全轮廓：</strong>补画被其他零件遮挡的线条，恢复该零件的完整形状。</li>
+                  <li><strong>确定尺寸：</strong>从装配图的配合尺寸、安装尺寸和零件结构推算零件尺寸；不能直接从图上量取作为设计尺寸。</li>
+                  <li><strong>补充技术要求：</strong>根据装配关系确定配合、粗糙度、几何公差和材料热处理要求。</li>
+                  <li><strong>检查：</strong>把拆画出的零件图放回装配关系中进行核对，确认尺寸链和装配可行性。</li>
+                </ol>
+
+                <div class="pitfall">
+                  <div class="pitfall-head">COMMON PITFALLS / 常见错误</div>
+                  <ul>
+                    <li><strong>把相邻零件的轮廓混在一起：</strong>不先看剖面线和序号，导致拆图时形状错误。</li>
+                    <li><strong>漏补被遮挡轮廓：</strong>只看可见线，忽略装配后被其他零件盖住的结构。</li>
+                    <li><strong>直接从装配图量尺寸：</strong>装配图可能按比例缩小，且许多尺寸由零件图决定。</li>
+                    <li><strong>明细栏顺序读反：</strong>明细栏自下而上填写，最下面一行是序号 1。</li>
+                    <li><strong>忽略装配尺寸：</strong>只关注零件形状，不读配合、安装和总体尺寸。</li>
+                  </ul>
+                </div>
+              </section>
+
+              <footer class="chapter-footer">
+                <div class="footer-nav">
+                  <a class="btn btn-secondary btn-small" href="#/learn/standards"><svg aria-hidden="true"><use href="#icon-arrow-left"></use></svg> 上一章</a>
+                  <a class="btn btn-secondary btn-small" href="#/reference">打开速查卡 <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+                </div>
+                <button class="btn btn-small master-btn" type="button" data-master="assembly"><svg aria-hidden="true"><use href="#icon-check"></use></svg><span>标记本章已掌握</span></button>
+              </footer>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="view" id="view-train" data-view="train" hidden>
+        <div class="container">
+          <div class="train-head">
+            <div>
+              <span class="eyebrow">PRACTICE LAB</span>
+              <h1>识图训练</h1>
+              <p>把“知道”变成“会判断”。三个小实验分别对应读图顺序、标注审查和配合性质，做完再回到讲义查漏补缺。</p>
+            </div>
+            <span class="tag">NO SCORE · 即时反馈</span>
+          </div>
+
+          <div class="lab-stack">
+            <section class="lab-card" id="lab-order">
+              <div class="lab-main">
+                <div class="lab-head"><span class="lab-code">LAB 01 / WORKFLOW</span><span class="tag">排序</span></div>
+                <h2>读一张零件图，先做什么？</h2>
+                <p class="lab-desc">下面四条动作被打乱了。按你认为正确的读图顺序，依次点击放入上方格子；再次点击已放入的卡片可以取回。</p>
+
+                <div class="order-board">
+                  <div class="order-slots" id="order-slots" aria-label="已选择的读图步骤"></div>
+                  <div class="order-pool" id="order-pool" aria-label="待排序的读图步骤"></div>
+                  <div class="order-actions">
+                    <button class="btn btn-small" type="button" id="order-check">检查顺序</button>
+                    <button class="btn btn-secondary btn-small" type="button" id="order-reset">重新打乱</button>
+                  </div>
+                  <p class="order-hint">提示：先建立“这是什么零件”，再处理形状与尺寸。</p>
+                </div>
+              </div>
+              <div class="lab-side">
+                <h3>为什么顺序重要？</h3>
+                <ul>
+                  <li>标题栏决定预期，避免把零件类型看错。</li>
+                  <li>视图对齐决定空间关系，先看整体再看局部。</li>
+                  <li>尺寸和技术要求最后读，避免一上来陷入细节。</li>
+                </ul>
+                <h3>完成后</h3>
+                <p>答对后回到讲义，用同一顺序复读任意一张零件图。</p>
+                <div class="lab-feedback" id="order-feedback" role="status" aria-live="polite">选择 4 个步骤后点击“检查顺序”。</div>
+              </div>
+            </section>
+
+            <section class="lab-card" id="lab-inspection">
+              <div class="lab-main">
+                <div class="lab-head"><span class="lab-code">LAB 02 / INSPECTION</span><span class="tag">找错</span></div>
+                <h2>这张图的标注，哪里有问题？</h2>
+                <p class="lab-desc">示意零件图中有 4 处带编号的标注，其中 2 处违反尺寸标注规则。点击编号检查，找出它们。</p>
+
+                <div class="inspection-board" id="inspection-board">
+                  <svg viewBox="0 0 760 340" role="img" aria-label="带四处编号标注的示意零件图">
+                    <defs>
+                      <marker id="insp-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M0 0 10 5 0 10Z" style="fill:var(--accent)"/>
+                      </marker>
+                    </defs>
+                    <text x="24" y="26" class="svg-text-sm">LAB 02 / DIMENSION INSPECTION</text>
+                    <text x="736" y="26" class="svg-text-sm" text-anchor="end">SCALE 1:2</text>
+
+                    <rect class="svg-line" x="100" y="80" width="500" height="170" rx="20"/>
+                    <circle class="svg-line" cx="320" cy="160" r="36"/>
+                    <path class="svg-center" d="M270 160h100M320 110v100"/>
+                    <path class="svg-hidden" d="M440 80v90M440 170h90"/>
+                    <path class="svg-hidden" d="M440 110h160"/>
+
+                    <path class="svg-dim" d="M100 48h500" marker-start="url(#insp-arrow)" marker-end="url(#insp-arrow)"/>
+                    <path class="svg-hidden" d="M100 80v-32M600 80v-32"/>
+                    <text x="350" y="41" class="svg-text-accent" text-anchor="middle">500</text>
+
+                    <path class="svg-dim" d="M68 80v170" marker-start="url(#insp-arrow)" marker-end="url(#insp-arrow)"/>
+                    <path class="svg-hidden" d="M100 80h-32M100 250h-32"/>
+                    <text x="58" y="160" class="svg-text-accent" text-anchor="middle" transform="rotate(-90 58 160)">170</text>
+
+                    <path class="svg-dim" d="M100 300h500" marker-start="url(#insp-arrow)" marker-end="url(#insp-arrow)"/>
+                    <path class="svg-hidden" d="M100 250v50M420 250v50M600 250v50"/>
+                    <text x="260" y="294" class="svg-text-accent" text-anchor="middle">320</text>
+                    <text x="510" y="294" class="svg-text-accent" text-anchor="middle">180</text>
+
+                    <text x="455" y="52" class="svg-text-accent">R20</text>
+                    <path class="svg-dim" d="M500 60 588 86"/>
+
+                    <path class="svg-dim" d="M350 190 290 160"/>
+                    <text x="356" y="196" class="svg-text-accent">φ60</text>
+
+                    <path class="svg-dim" d="M590 130h-55"/>
+                    <text x="596" y="134" class="svg-text-accent">12</text>
+
+                    <text x="100" y="328" class="svg-text-sm">未注圆角 R5 · 未注公差按 GB/T 1804-m</text>
+                  </svg>
+
+                  <button class="hotspot" type="button" data-inspect="1" style="left:54%;top:57%" aria-label="检查标注1">1</button>
+                  <button class="hotspot" type="button" data-inspect="2" style="left:80%;top:19%" aria-label="检查标注2">2</button>
+                  <button class="hotspot" type="button" data-inspect="3" style="left:67%;top:86%" aria-label="检查标注3">3</button>
+                  <button class="hotspot" type="button" data-inspect="4" style="left:84%;top:38%" aria-label="检查标注4">4</button>
+                </div>
+                <div class="inspection-status"><span id="inspection-status-text">已检查 0 / 4 · 已找到 0 / 2 处错误</span><button class="btn btn-secondary btn-small" type="button" id="inspection-reset">重新检查</button></div>
+              </div>
+              <div class="lab-side">
+                <h3>审查要点</h3>
+                <ul>
+                  <li>尺寸链是否封闭、尺寸是否重复。</li>
+                  <li>是否在虚线、交线等不宜标注的位置标注。</li>
+                  <li>φ、R 等符号是否与要素类型匹配。</li>
+                </ul>
+                <h3>点击结果</h3>
+                <div class="lab-feedback" id="inspection-feedback" role="status" aria-live="polite">点击图中编号，查看该处标注的判定与解释。</div>
+              </div>
+            </section>
+
+            <section class="lab-card" id="lab-fit">
+              <div class="lab-main">
+                <div class="lab-head"><span class="lab-code">LAB 03 / FIT</span><span class="tag">配合</span></div>
+                <h2>孔与轴，到底松还是紧？</h2>
+                <p class="lab-desc">选择一组 φ30 的配合代号，观察孔、轴公差带相对零线的位置，并读出最大间隙或最大过盈。</p>
+
+                <div class="fit-controls">
+                  <div class="field">
+                    <label for="fit-select">配合代号</label>
+                    <select id="fit-select">
+                      <option value="g6" selected>φ30 H7/g6 · 间隙</option>
+                      <option value="h6">φ30 H7/h6 · 间隙</option>
+                      <option value="k6">φ30 H7/k6 · 过渡</option>
+                      <option value="p6">φ30 H7/p6 · 过盈</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="fit-size">基本尺寸</label>
+                    <select id="fit-size" disabled><option>φ30 mm</option></select>
+                  </div>
+                </div>
+
+                <div class="tol-plot" id="tol-plot" role="img" aria-label="孔与轴公差带相对零线的位置示意">
+                  <span class="tol-axis-label" style="top:6.67%">+40</span>
+                  <span class="tol-axis-label" style="top:33.33%">+20</span>
+                  <span class="tol-axis-label" style="top:60%">0</span>
+                  <span class="tol-axis-label" style="top:86.67%">−20</span>
+                  <span class="tol-zero-line" style="top:60%"></span>
+                  <span class="tol-zero-label" style="top:60%">零线</span>
+                  <span class="tol-band hole" id="hole-band"><span id="hole-label">H7</span></span>
+                  <span class="tol-band shaft" id="shaft-band"><span id="shaft-label">g6</span></span>
+                </div>
+
+                <div class="fit-summary">
+                  <div class="fit-metric"><small>配合类型</small><strong id="fit-type-text">间隙配合</strong></div>
+                  <div class="fit-metric"><small>孔公差带</small><strong id="hole-values">0 ~ +21 μm</strong></div>
+                  <div class="fit-metric"><small>轴公差带</small><strong id="shaft-values">−20 ~ −7 μm</strong></div>
+                  <div class="fit-metric"><small>极限值</small><strong id="fit-extremes">7 ~ 41 μm</strong></div>
+                </div>
+                <div class="fit-type" id="fit-explanation"><strong>间隙配合：</strong>孔的公差带在轴的公差带之上，装配后始终存在间隙。最大间隙 41 μm，最小间隙 7 μm。</div>
+              </div>
+              <div class="lab-side">
+                <h3>怎么读公差带</h3>
+                <ul>
+                  <li>零线表示基本尺寸，向上为正偏差，向下为负偏差。</li>
+                  <li>H7 是基孔制基准孔，下偏差为 0。</li>
+                  <li>轴代号 g6、h6 位于零线下方；k6 跨零线；p6 位于零线上方。</li>
+                  <li>孔带在上、轴带在下 → 间隙；重叠 → 过渡；轴带在上 → 过盈。</li>
+                </ul>
+                <h3>提示</h3>
+                <p>数值为 φ30 的示例近似值，用于理解公差带关系；实际设计请查最新国家标准公差表。</p>
+                <div class="lab-feedback" id="fit-feedback" role="status" aria-live="polite">当前为基孔制间隙配合，适用于滑动或导向结构。</div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+      <section class="view" id="view-reference" data-view="reference" hidden>
+        <div class="container">
+          <div class="ref-head">
+            <div>
+              <span class="eyebrow">QUICK REFERENCE</span>
+              <h1>一页速查</h1>
+              <p>考前最后 10 分钟看这里：三等规律、图线、剖视选择、尺寸符号、公差配合、标准件标记与装配图清单。</p>
+            </div>
+            <span class="tag">可打印 · 离线可用</span>
+          </div>
+
+          <div class="ref-filters" role="group" aria-label="筛选速查卡">
+            <button class="ref-filter" type="button" data-ref-filter="all" aria-pressed="true">全部</button>
+            <button class="ref-filter" type="button" data-ref-filter="projection" aria-pressed="false">投影读图</button>
+            <button class="ref-filter" type="button" data-ref-filter="section" aria-pressed="false">剖视断面</button>
+            <button class="ref-filter" type="button" data-ref-filter="dimension" aria-pressed="false">尺寸标注</button>
+            <button class="ref-filter" type="button" data-ref-filter="tolerance" aria-pressed="false">精度配合</button>
+            <button class="ref-filter" type="button" data-ref-filter="standards" aria-pressed="false">标准件</button>
+            <button class="ref-filter" type="button" data-ref-filter="assembly" aria-pressed="false">装配图</button>
+          </div>
+
+          <div class="ref-grid" id="ref-grid">
+            <article class="ref-card" data-category="projection">
+              <span class="ref-code">REF. 01 / PROJECTION</span>
+              <h2>三视图与三等规律</h2>
+              <div class="formula-strip">
+                <div><small>主 ↔ 俯</small><strong>长对正</strong></div>
+                <div><small>主 ↔ 左</small><strong>高平齐</strong></div>
+                <div><small>俯 ↔ 左</small><strong>宽相等</strong></div>
+              </div>
+              <ul class="clean-list">
+                <li>第一角配置：俯视图在主视图下方，左视图在主视图右方。</li>
+                <li>俯视图的上下 = 左视图的左右 = 前后深度。</li>
+                <li>不可见轮廓用细虚线；中心线、轴线用细点画线。</li>
+                <li>中心线超出轮廓 2～5 mm。</li>
+              </ul>
+              <div class="mnemonic"><small>MNEMONIC</small>长对正，高平齐，宽相等；先看主视图，再对投影。</div>
+            </article>
+
+            <article class="ref-card" data-category="projection">
+              <span class="ref-code">REF. 02 / LINES</span>
+              <h2>图线速查</h2>
+              <table class="data-table">
+                <thead><tr><th>线型</th><th>用途</th></tr></thead>
+                <tbody>
+                  <tr><td>粗实线</td><td>可见轮廓、可见过渡线</td></tr>
+                  <tr><td>细实线</td><td>尺寸线、尺寸界线、剖面线</td></tr>
+                  <tr><td>细虚线</td><td>不可见轮廓、不可见过渡线</td></tr>
+                  <tr><td>细点画线</td><td>轴线、对称中心线、分度圆</td></tr>
+                  <tr><td>波浪线</td><td>断裂边界、局部剖分界</td></tr>
+                  <tr><td>细双点画线</td><td>假想轮廓、极限位置</td></tr>
+                </tbody>
+              </table>
+              <p class="note-box" style="margin:12px 0 0"><strong>比例：</strong>尺寸数字是实际尺寸，不随比例变化。</p>
+            </article>
+
+            <article class="ref-card" data-category="section">
+              <span class="ref-code">REF. 03 / SECTION</span>
+              <h2>剖视选择</h2>
+              <table class="data-table">
+                <thead><tr><th>类型</th><th>适用</th><th>关键</th></tr></thead>
+                <tbody>
+                  <tr><td>全剖</td><td>内形复杂、外形简单/不对称</td><td>整个剖开</td></tr>
+                  <tr><td>半剖</td><td>基本对称，内外形都要</td><td>分界细点画线</td></tr>
+                  <tr><td>局部剖</td><td>仅局部内形</td><td>波浪线分界</td></tr>
+                  <tr><td>旋转剖</td><td>相交剖切面</td><td>先旋转后投影</td></tr>
+                  <tr><td>阶梯剖</td><td>平行剖切面</td><td>标注转折位置</td></tr>
+                </tbody>
+              </table>
+              <ul class="clean-list">
+                <li>剖面线：45° 细实线，同一零件方向与间隔一致。</li>
+                <li>相邻零件剖面线方向相反或间隔不同。</li>
+                <li>断面图只画剖切面接触部分，不画后方结构。</li>
+              </ul>
+            </article>
+
+            <article class="ref-card" data-category="dimension">
+              <span class="ref-code">REF. 04 / DIMENSION</span>
+              <h2>尺寸符号</h2>
+              <table class="data-table">
+                <thead><tr><th>符号</th><th>含义</th><th>示例</th></tr></thead>
+                <tbody>
+                  <tr><td class="mono">φ</td><td>直径</td><td class="mono">φ30</td></tr>
+                  <tr><td class="mono">R</td><td>半径</td><td class="mono">R10</td></tr>
+                  <tr><td class="mono">Sφ / SR</td><td>球直径 / 球半径</td><td class="mono">Sφ20 / SR15</td></tr>
+                  <tr><td class="mono">□</td><td>正方形</td><td class="mono">□20</td></tr>
+                  <tr><td class="mono">C</td><td>倒角</td><td class="mono">C2</td></tr>
+                  <tr><td class="mono">EQS</td><td>均布</td><td class="mono">4×φ6 EQS</td></tr>
+                  <tr><td class="mono">⌒</td><td>弧长</td><td class="mono">⌒R20</td></tr>
+                </tbody>
+              </table>
+              <div class="mnemonic"><small>CHECK</small>正确 · 完整 · 清晰 · 合理；不重复、不封闭、不标虚线、不标交线。</div>
+            </article>
+
+            <article class="ref-card" data-category="tolerance">
+              <span class="ref-code">REF. 05 / PRECISION</span>
+              <h2>公差与配合</h2>
+              <ul class="clean-list">
+                <li><strong>孔大写：</strong>H7、K7、P7；<strong>轴小写：</strong>h6、g6、k6、p6。</li>
+                <li><strong>基孔制：</strong>孔 H，下偏差 0；<strong>基轴制：</strong>轴 h，上偏差 0。</li>
+                <li><strong>公差：</strong>T = 上偏差 − 下偏差，恒为正值。</li>
+                <li><strong>间隙：</strong>H7/g6、H7/h6；<strong>过渡：</strong>H7/k6；<strong>过盈：</strong>H7/p6。</li>
+              </ul>
+              <table class="data-table">
+                <thead><tr><th>Ra</th><th>一般含义</th></tr></thead>
+                <tbody>
+                  <tr><td class="mono">0.8 / 1.6</td><td>精磨、研磨，高精度表面</td></tr>
+                  <tr><td class="mono">3.2 / 6.3</td><td>精车、精铣，一般配合面</td></tr>
+                  <tr><td class="mono">12.5 / 25</td><td>粗加工、非配合面</td></tr>
+                </tbody>
+              </table>
+              <div class="mnemonic"><small>SHAPE</small>形状公差通常无基准；方向、位置、跳动公差通常有基准。</div>
+            </article>
+
+            <article class="ref-card" data-category="standards">
+              <span class="ref-code">REF. 06 / STANDARD PARTS</span>
+              <h2>标准件标记</h2>
+              <table class="data-table">
+                <thead><tr><th>标记</th><th>读法</th></tr></thead>
+                <tbody>
+                  <tr><td class="mono">M20×2 LH–6g</td><td>普通螺纹，公称 20，细牙螺距 2，左旋，外螺纹公差 6g</td></tr>
+                  <tr><td class="mono">Tr40×7</td><td>梯形螺纹，公称 40，螺距 7</td></tr>
+                  <tr><td class="mono">G1/2</td><td>管螺纹，公称尺寸 1/2 in</td></tr>
+                  <tr><td class="mono">键 8×7×40</td><td>平键宽 8、高 7、长 40</td></tr>
+                  <tr><td class="mono">6208</td><td>深沟球轴承，内径 08×5 = 40</td></tr>
+                </tbody>
+              </table>
+              <div class="formula-strip">
+                <div><small>PITCH</small><strong>d = mz</strong></div>
+                <div><small>TIP</small><strong>da = m(z+2)</strong></div>
+                <div><small>ROOT</small><strong>df = m(z−2.5)</strong></div>
+              </div>
+            </article>
+
+            <article class="ref-card" data-category="assembly">
+              <span class="ref-code">REF. 07 / ASSEMBLY</span>
+              <h2>装配图拆图清单</h2>
+              <ul class="clean-list">
+                <li>先读标题栏与明细栏，明确零件数量与材料。</li>
+                <li>用剖面线方向、间隔和序号区分零件。</li>
+                <li>装配图尺寸：规格、装配、安装、总体、其他重要尺寸。</li>
+                <li>明细栏自下而上填写，最下面一行是序号 1。</li>
+                <li>拆画零件：分离轮廓、补遮挡线、定尺寸、补技术要求、回装核对。</li>
+              </ul>
+              <div class="mnemonic"><small>SEQUENCE</small>先分件，后理关系；先补形，后标尺寸；最后回装检查。</div>
+            </article>
+
+            <article class="ref-card" data-category="projection section dimension tolerance">
+              <span class="ref-code">REF. 08 / FINAL CHECK</span>
+              <h2>交卷前 12 条</h2>
+              <ul class="clean-list">
+                <li>长对正、高平齐、宽相等，三个方向都对齐了吗？</li>
+                <li>共面、相切处是否多画了线？相交处是否漏画线？</li>
+                <li>半剖分界是否是细点画线？局部剖波浪线是否穿过孔槽？</li>
+                <li>剖面线方向、间隔是否一致？相邻零件是否区分？</li>
+                <li>尺寸是否重复、封闭、标在虚线上或交线上？</li>
+                <li>φ、R、C、EQS 等符号是否漏写或写错？</li>
+                <li>Ra 与尺寸公差是否混淆？数值是否合理？</li>
+                <li>配合代号是否先孔后轴？大写小写是否正确？</li>
+                <li>形状公差是否被错误地加上基准？</li>
+                <li>螺纹旋向、螺距、公差带是否读对？</li>
+                <li>轴承内径、齿轮齿顶圆公式是否算对？</li>
+                <li>装配图序号与明细栏是否一一对应？</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="view" id="view-quiz" data-view="quiz" hidden>
+        <div class="container">
+          <div class="quiz-wrap">
+            <div class="quiz-head">
+              <div>
+                <span class="eyebrow">SELF ASSESSMENT</span>
+                <h1>模拟测验</h1>
+                <p>18 道精选题覆盖七章内容。每题作答后立即查看解析，错题会自动进入本地错题本。</p>
+              </div>
+              <span class="tag">即时解析</span>
+            </div>
+
+            <div class="quiz-start" id="quiz-start">
+              <div class="quiz-intro">
+                <h2>准备好了吗？</h2>
+                <p>建议先完成讲义，再做测验。系统会随机打乱题目和选项顺序，避免只记住答案位置。</p>
+                <div class="quiz-modes">
+                  <button class="btn" type="button" id="start-10">10 题冲刺 <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></button>
+                  <button class="btn btn-secondary" type="button" id="start-all">18 题全测</button>
+                  <button class="btn btn-secondary" type="button" id="wrongbook-open">错题本</button>
+                </div>
+                <div class="quiz-score-mini">
+                  <span id="best-score">最佳成绩 —</span>
+                  <span id="attempt-count">已完成 0 次</span>
+                  <span id="wrong-count">错题 0 道</span>
+                </div>
+              </div>
+              <div class="quiz-stats">
+                <div class="quiz-stat"><small>BEST SCORE</small><strong id="stat-best">—</strong><span>最高正确率</span></div>
+                <div class="quiz-stat"><small>QUESTIONS</small><strong>18</strong><span>覆盖 7 个章节</span></div>
+                <div class="quiz-stat"><small>WRONG BOOK</small><strong id="stat-wrong">0</strong><span>待回炉错题</span></div>
+              </div>
+            </div>
+
+            <div class="quiz-stage" id="quiz-stage" aria-live="polite">
+              <div class="quiz-topline">
+                <span id="quiz-counter">QUESTION 01 / 10</span>
+                <button class="quiz-exit" type="button" id="quiz-quit">退出本轮</button>
+              </div>
+              <div class="quiz-progress"><span id="quiz-progress-bar"></span></div>
+              <div class="question-card">
+                <div class="question-meta"><span class="q-topic" id="quiz-topic">投影与三视图</span><span class="q-id" id="quiz-id">Q01</span></div>
+                <h2 id="quiz-question">题目</h2>
+                <div class="options" id="quiz-options"></div>
+                <div class="quiz-feedback" id="quiz-feedback"></div>
+                <div class="quiz-next-row"><button class="btn" type="button" id="quiz-next" hidden>下一题 <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></button></div>
+              </div>
+            </div>
+
+            <div class="quiz-result" id="quiz-result" hidden>
+              <div class="result-top">
+                <div class="score-ring" id="score-ring"><div class="score-inner"><strong id="score-value">0</strong><span id="score-unit">/ 10</span></div></div>
+                <div class="result-copy">
+                  <h2 id="result-title">本轮完成</h2>
+                  <p id="result-summary">正在统计结果……</p>
+                </div>
+              </div>
+              <div class="result-breakdown" id="result-breakdown"></div>
+              <div class="result-actions">
+                <button class="btn" type="button" id="result-retry">再来一轮</button>
+                <button class="btn btn-secondary" type="button" id="result-wrong">只看错题</button>
+                <button class="btn btn-secondary" type="button" id="result-home">返回首页</button>
+              </div>
+              <div class="wrong-review" id="result-wrong-review"></div>
+            </div>
+
+            <div class="quiz-result" id="wrongbook-panel" hidden>
+              <div class="result-top" style="grid-template-columns:1fr">
+                <div class="result-copy">
+                  <h2>错题本</h2>
+                  <p>这里保存最近答错的题目。点击“练习错题”只做这些题；答对后对应题目会自动移出。</p>
+                </div>
+              </div>
+              <div class="result-actions" style="margin-top:18px">
+                <button class="btn" type="button" id="wrongbook-practice">练习错题</button>
+                <button class="btn btn-secondary" type="button" id="wrongbook-clear">清空错题本</button>
+                <button class="btn btn-secondary" type="button" id="wrongbook-close">关闭</button>
+              </div>
+              <div class="wrong-review" id="wrongbook-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <strong>识图·标注 / ENGINEERING DRAWING LAB</strong>
+          <p>依据机械制图常用 GB/T 标准与工程识图方法整理，供复习与教学使用。实际工程应以图纸要求、现行标准和企业规范为准。</p>
+        </div>
+        <nav class="footer-links" aria-label="页脚导航">
+          <a href="#/learn/projection">核心讲义</a>
+          <a href="#/train">识图训练</a>
+          <a href="#/reference">速查卡</a>
+          <a href="#/quiz">模拟测验</a>
+          <a href="#/home">返回首页</a>
+        </nav>
+        <span class="footer-note">BUILT FOR REVIEW · 2026</span>
+      </div>
+    </footer>
+  </div>
+
+  <dialog class="search-dialog" id="search-dialog" aria-label="搜索知识点">
+    <div class="search-top">
+      <svg aria-hidden="true"><use href="#icon-search"></use></svg>
+      <input class="search-input" id="search-input" type="search" placeholder="搜索：三等规律、半剖、Ra、H7/g6、相贯线…" autocomplete="off" aria-label="输入关键词">
+      <button class="search-close" id="search-close" type="button">ESC 关闭</button>
+    </div>
+    <div class="search-hints" aria-label="热门搜索">
+      <button type="button" data-query="三等规律">三等规律</button>
+      <button type="button" data-query="半剖">半剖</button>
+      <button type="button" data-query="Ra">Ra</button>
+      <button type="button" data-query="H7/g6">H7/g6</button>
+      <button type="button" data-query="相贯线">相贯线</button>
+      <button type="button" data-query="明细栏">明细栏</button>
+      <button type="button" data-query="尺寸链">尺寸链</button>
+    </div>
+    <div class="search-results" id="search-results">
+      <p class="search-empty">输入关键词，搜索 33 个知识专题。</p>
+    </div>
+    <div class="search-foot"><span>↑↓ 选择 · Enter 跳转</span><span>本地检索 · 无需联网</span></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <noscript>
+    <div style="max-width:720px;margin:0 auto;padding:40px 20px;font-size:14px">
+      本站的章节切换、搜索、训练和测验需要 JavaScript。请启用 JavaScript 后刷新页面。
+    </div>
+  </noscript>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
